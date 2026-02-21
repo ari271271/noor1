@@ -622,17 +622,14 @@ body.rtl .dropdown-menu {
 }
 
 /* =========================================
-   --- DELL TECH CORE ANIMATION (TAM KARARINDA BOYUT & CANLI ARKA PLAN) ---
+   --- DELL TECH CORE ANIMATION ---
    ========================================= */
-
-/* 1. Arka Planı Canlandırma (HTML'deki bg-black'i ezer) */
 #comp_sh_dell section:first-of-type {
     background: radial-gradient(circle at center, #0a192f 0%, #000000 80%) !important;
     position: relative;
     overflow: hidden;
 }
 
-/* İsteğe bağlı: Çok hafif bir dijital ızgara (grid) dokusu */
 #comp_sh_dell section:first-of-type::before {
     content: '';
     position: absolute;
@@ -645,37 +642,34 @@ body.rtl .dropdown-menu {
     pointer-events: none;
 }
 
-/* 2. Merkezdeki Dell Reaktörü (Boyut: 180px) */
 .dell-super-container {
     position: relative;
-    width: 180px;  /* Diğer logolarla uyumlu ideal boyut */
-    height: 180px;
+    width: 140px;
+    height: 140px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto 2rem auto;
+    margin: 0 auto 1rem auto;
     perspective: 1000px;
-    z-index: 2; /* Arka plan efektlerinin önünde dursun */
+    z-index: 2;
 }
 
-/* DEVA IŞIK HÜZMESİ (Ambient Glow) - Arka planla bağlantıyı kurar */
 .dell-super-container::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400%; /* Konteynerden çok daha büyük */
+    width: 400%;
     height: 400%;
     background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
     filter: blur(60px);
     opacity: 0.5;
     animation: massiveAmbientPulse 5s ease-in-out infinite alternate;
-    z-index: -1; /* Halkaların arkasında */
+    z-index: -1;
     pointer-events: none;
 }
 
-/* Dış Mavi Enerji Halkası */
 .dell-ring-outer {
     position: absolute;
     inset: 0;
@@ -688,10 +682,9 @@ body.rtl .dropdown-menu {
     z-index: 2;
 }
 
-/* İç Kesik Çizgili Veri Halkası */
 .dell-ring-inner {
     position: absolute;
-    inset: 20px; 
+    inset: 15px;
     border-radius: 50%;
     border: 2px dashed rgba(255, 255, 255, 0.5);
     animation: reactorSpin 12s linear infinite reverse; 
@@ -699,21 +692,19 @@ body.rtl .dropdown-menu {
     z-index: 2;
 }
 
-/* Merkez Enerji Çekirdeği */
 .dell-core-glow {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     background: radial-gradient(circle, var(--brand-blue) 0%, transparent 70%);
-    filter: blur(15px);
+    filter: blur(12px);
     opacity: 0.8;
     animation: corePulse 3s ease-in-out infinite alternate;
     z-index: 1;
 }
 
-/* Dell Yazısı */
 .dell-super-text {
-    font-size: 2.5rem; /* Yazı boyutu */
+    font-size: 2rem;
     font-weight: 900;
     color: #ffffff;
     margin: 0;
@@ -723,14 +714,12 @@ body.rtl .dropdown-menu {
     text-shadow: 0 0 15px rgba(37, 99, 235, 1);
 }
 
-/* Eğik E Harfi */
 .letter-e-super {
     display: inline-block;
     transform: rotate(-15deg) translateY(2px); 
     transition: all 0.4s ease; 
 }
 
-/* Hover Efekti - Animasyon hızlanır ve parlar */
 .dell-super-container:hover .dell-ring-outer {
     animation-duration: 3s;
     box-shadow: 0 0 30px rgba(37, 99, 235, 0.9), inset 0 0 20px rgba(37, 99, 235, 0.6);
@@ -755,17 +744,735 @@ body.rtl .dropdown-menu {
     text-shadow: 0 0 20px #ffffff;
 }
 
-/* Animasyon Keyframe'leri */
-@keyframes reactorSpin {
-    to { transform: rotate(360deg); }
+@keyframes reactorSpin { to { transform: rotate(360deg); } }
+@keyframes corePulse { 0% { transform: scale(0.9); opacity: 0.6; } 100% { transform: scale(1.1); opacity: 0.9; } }
+@keyframes massiveAmbientPulse { 0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.8); } 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); } }
+
+/* =========================================
+   --- LENOVO CYBER/GLITCH ANIMATION ---
+   ========================================= */
+#comp_sh_lenovo section:first-of-type {
+    background: radial-gradient(circle at 50% 0%, #1a0505 0%, #000000 80%) !important;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
 }
 
-@keyframes corePulse {
-    0% { transform: scale(0.9); opacity: 0.6; }
-    100% { transform: scale(1.1); opacity: 0.9; }
+#comp_sh_lenovo section:first-of-type::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(45deg, rgba(226, 35, 26, 0.04) 25%, transparent 25%, transparent 50%, rgba(226, 35, 26, 0.04) 50%, rgba(226, 35, 26, 0.04) 75%, transparent 75%, transparent);
+    background-size: 30px 30px;
+    z-index: 1;
+    pointer-events: none;
 }
 
-@keyframes massiveAmbientPulse {
-    0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.8); }
-    100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+.lenovo-brand-stage {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1rem auto;
+    z-index: 10;
+}
+
+.lenovo-laser {
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    width: 200%;
+    height: 2px;
+    background: #e2231a;
+    box-shadow: 0 0 20px 4px rgba(226, 35, 26, 0.8);
+    transform: translateY(-50%);
+    animation: laserScan 3.5s infinite cubic-bezier(0.7, 0, 0.3, 1);
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes laserScan {
+    0% { left: -100%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+.lenovo-think-dot {
+    position: absolute;
+    top: 20px;
+    right: 50%;
+    margin-right: -130px; 
+    width: 14px;
+    height: 14px;
+    background: #e2231a;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #e2231a, inset 0 -3px 5px rgba(0,0,0,0.4);
+    animation: dotPulse 2s infinite alternate;
+    z-index: 15;
+}
+
+@keyframes dotPulse {
+    0% { transform: scale(1); box-shadow: 0 0 10px rgba(226, 35, 26, 0.4); }
+    100% { transform: scale(1.3); box-shadow: 0 0 25px rgba(226, 35, 26, 1), 0 0 40px rgba(226, 35, 26, 0.6); }
+}
+
+.lenovo-title-wrapper {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+}
+
+.lenovo-modern-text {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.lenovo-modern-text::before,
+.lenovo-modern-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    opacity: 0.8;
+}
+
+.lenovo-modern-text::before {
+    left: 3px;
+    text-shadow: -2px 0 #e2231a;
+    clip: rect(24px, 550px, 90px, 0);
+    animation: lenovoGlitch 3s infinite linear alternate-reverse;
+}
+
+.lenovo-modern-text::after {
+    left: -3px;
+    text-shadow: -2px 0 rgba(37, 99, 235, 0.6);
+    clip: rect(85px, 550px, 140px, 0);
+    animation: lenovoGlitch 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes lenovoGlitch {
+    0% { clip: rect(10px, 9999px, 44px, 0); transform: skew(0.2deg); }
+    20% { clip: rect(65px, 9999px, 99px, 0); transform: skew(0.5deg); }
+    40% { clip: rect(23px, 9999px, 12px, 0); transform: skew(0.1deg); }
+    60% { clip: rect(89px, 9999px, 78px, 0); transform: skew(0.8deg); }
+    80% { clip: rect(12px, 9999px, 56px, 0); transform: skew(0.3deg); }
+    100% { clip: rect(45px, 9999px, 23px, 0); transform: skew(0deg); }
+}
+
+.lenovo-sharp-line {
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #e2231a, transparent);
+    margin: 5px auto 0 auto;
+    box-shadow: 0 0 10px #e2231a;
+    animation: expandLenovoLine 1.5s forwards cubic-bezier(0.8, 0, 0.2, 1) 0.5s;
+}
+
+@keyframes expandLenovoLine { to { width: 130%; } }
+
+.lenovo-brand-stage:hover .lenovo-laser { animation-duration: 1.5s; }
+.lenovo-brand-stage:hover .lenovo-modern-text { letter-spacing: 12px; color: #f8f9fc; text-shadow: 0 0 20px rgba(226, 35, 26, 0.5); }
+.lenovo-brand-stage:hover .lenovo-think-dot { background: #ffffff; box-shadow: 0 0 20px #ffffff, 0 0 50px #e2231a; }
+
+/* =========================================
+   --- HP PREMIUM CORPORATE ANIMATION ---
+   ========================================= */
+#comp_sh_hp section:first-of-type {
+    background: radial-gradient(circle at center, #1a2530 0%, #020508 100%) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+#comp_sh_hp section:first-of-type::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.03) 0px,
+        rgba(255, 255, 255, 0.03) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: overlay; 
+}
+
+.hp-premium-stage {
+    position: relative;
+    width: 250px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    z-index: 10;
+}
+
+.hp-ambient-light {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 100px;
+    background: radial-gradient(ellipse, rgba(0, 150, 214, 0.15) 0%, transparent 70%);
+    filter: blur(20px);
+    animation: hpGentleBreathe 4s ease-in-out infinite alternate;
+    z-index: 2;
+}
+
+@keyframes hpGentleBreathe {
+    0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.hp-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+
+.hp-slash {
+    width: 4px;
+    height: 80px;
+    background: linear-gradient(to bottom, #ffffff, #0096d6);
+    border-radius: 2px;
+    transform: skewX(-20deg);
+    opacity: 0;
+    box-shadow: 0 0 10px rgba(0, 150, 214, 0.3);
+}
+
+.hp-slash-left {
+    margin-right: 15px;
+    animation: hpSlideInLeft 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.hp-slash-right {
+    margin-left: 15px;
+    animation: hpSlideInRight 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.3s;
+}
+
+@keyframes hpSlideInLeft {
+    0% { transform: skewX(-20deg) translateY(50px); opacity: 0; }
+    100% { transform: skewX(-20deg) translateY(0); opacity: 1; }
+}
+
+@keyframes hpSlideInRight {
+    0% { transform: skewX(-20deg) translateY(-50px); opacity: 0; }
+    100% { transform: skewX(-20deg) translateY(0); opacity: 1; }
+}
+
+.hp-elegant-text {
+    font-family: 'Times New Roman', serif;
+    font-size: 5rem;
+    font-style: italic;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: scale(0.9);
+    animation: hpTextFadeIn 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.5s;
+}
+
+@keyframes hpTextFadeIn { to { opacity: 1; transform: scale(1); } }
+
+.hp-chrome-reflection {
+    position: absolute;
+    bottom: -10px;
+    width: 150%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), rgba(0, 150, 214, 0.6), rgba(255,255,255,0.4), transparent);
+    box-shadow: 0 5px 15px rgba(0, 150, 214, 0.2);
+    opacity: 0;
+    animation: hpReflectShow 2s ease forwards 1s;
+}
+
+@keyframes hpReflectShow { to { opacity: 1; bottom: 10px; } }
+
+.hp-premium-stage:hover .hp-slash {
+    background: #0096d6;
+    box-shadow: 0 0 15px rgba(0, 150, 214, 0.6);
+    transform: skewX(-20deg) scaleY(1.1);
+    transition: all 0.4s ease;
+}
+
+.hp-premium-stage:hover .hp-elegant-text {
+    color: #f0f9ff;
+    text-shadow: 0 0 20px rgba(0, 150, 214, 0.4);
+    transition: all 0.4s ease;
+}
+
+.hp-premium-stage:hover .hp-chrome-reflection {
+    height: 2px;
+    box-shadow: 0 5px 25px rgba(0, 150, 214, 0.5);
+    transition: all 0.4s ease;
+}
+
+/* =========================================
+   --- MICROSOFT SURFACE FLUENT ANIMATION ---
+   ========================================= */
+#comp_sh_surface section:first-of-type {
+    background: radial-gradient(circle at top, #1a1a24 0%, #050505 100%) !important;
+    position: relative;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+.surface-fluent-stage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    z-index: 10;
+    width: 100%;
+    height: 220px;
+}
+
+.surface-ambient-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 164, 239, 0.15) 0%, rgba(127, 186, 0, 0.1) 40%, transparent 70%);
+    filter: blur(40px);
+    animation: surfaceBreathe 5s infinite alternate ease-in-out;
+    z-index: 1;
+}
+
+@keyframes surfaceBreathe {
+    0% { transform: scale(0.8) translateY(20px); opacity: 0.5; }
+    100% { transform: scale(1.1) translateY(-20px); opacity: 1; }
+}
+
+.surface-logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 6px;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 10;
+    transform: rotateX(15deg) rotateY(-10deg);
+    transform-style: preserve-3d;
+}
+
+.surface-pane {
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    opacity: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3), inset 0 0 10px rgba(255,255,255,0.2);
+}
+
+.pane-red { background: #f25022; animation: paneFlyIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.1s; transform-origin: bottom right; }
+.pane-green { background: #7fba00; animation: paneFlyIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.3s; transform-origin: bottom left; }
+.pane-blue { background: #00a4ef; animation: paneFlyIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.5s; transform-origin: top right; }
+.pane-yellow { background: #ffb900; animation: paneFlyIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.7s; transform-origin: top left; }
+
+@keyframes paneFlyIn {
+    0% { transform: translateZ(100px) scale(0.5); opacity: 0; }
+    100% { transform: translateZ(0) scale(1); opacity: 1; }
+}
+
+.surface-elegant-text {
+    font-family: 'Segoe UI', 'Inter', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 300; 
+    color: #ffffff;
+    letter-spacing: 2px;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: surfaceTextUp 1s ease forwards 1s;
+    z-index: 10;
+}
+
+.surface-elegant-text strong {
+    font-weight: 600;
+}
+
+@keyframes surfaceTextUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.surface-glass-shelf {
+    position: absolute;
+    bottom: 10px;
+    width: 250px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: rotateX(75deg);
+    box-shadow: 0 -10px 20px rgba(0, 164, 239, 0.1);
+    opacity: 0;
+    animation: surfaceShelfFade 1.5s ease forwards 1.2s;
+}
+
+@keyframes surfaceShelfFade {
+    to { opacity: 1; }
+}
+
+.surface-fluent-stage:hover .surface-logo-grid {
+    transform: rotateX(0deg) rotateY(0deg) scale(1.1);
+    gap: 12px;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.surface-fluent-stage:hover .surface-pane {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 0 15px rgba(255,255,255,0.4);
+    border-radius: 4px;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.surface-fluent-stage:hover .pane-red { box-shadow: 0 0 20px rgba(242, 80, 34, 0.6); }
+.surface-fluent-stage:hover .pane-green { box-shadow: 0 0 20px rgba(127, 186, 0, 0.6); }
+.surface-fluent-stage:hover .pane-blue { box-shadow: 0 0 20px rgba(0, 164, 239, 0.6); }
+.surface-fluent-stage:hover .pane-yellow { box-shadow: 0 0 20px rgba(255, 185, 0, 0.6); }
+
+.surface-fluent-stage:hover .surface-elegant-text {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    transition: all 0.5s ease;
+}
+
+.surface-fluent-stage:not(:hover) .surface-logo-grid,
+.surface-fluent-stage:not(:hover) .surface-pane,
+.surface-fluent-stage:not(:hover) .surface-elegant-text {
+    transition: all 0.5s ease; 
+}
+
+/* --- Apple Ultra Stage --- */
+.apple-ultra-stage {
+    background: #000000;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 20px;
+}
+
+.apple-fluid-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% -20%, #1a1a1a 0%, #000000 100%);
+    z-index: 1;
+}
+
+/* --- Glass Card Tasarımı --- */
+.apple-luxury-wrapper {
+    position: relative;
+    z-index: 10;
+    perspective: 1000px;
+    /* EKLENENLER: */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* İçindeki kartı ve yazıyı yatayda ortalar */
+}
+
+.apple-pro-card {
+    width: 180px;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+    animation: appleFloat 5s ease-in-out infinite;
+    overflow: hidden;
+}
+
+/* Kartın içindeki holografik parlama */
+.card-shimmer-sweep {
+    position: absolute;
+    inset: -100%;
+    background: linear-gradient(
+        135deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.05) 45%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.05) 55%,
+        transparent 100%
+    );
+    animation: shimmerSweep 8s infinite linear;
+}
+
+.apple-logo-svg {
+    width: 80px;
+    color: #ffffff;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+    z-index: 2;
+}
+
+/* --- Başlık ve Yazılar --- */
+.apple-branding {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.apple-title-new {
+    font-size: 3rem;
+    font-weight: 200;
+    color: #ffffff;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.apple-title-new span {
+    font-weight: 700;
+    background: linear-gradient(180deg, #fff 0%, #888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.apple-glow-line {
+    width: 60px;
+    height: 2px;
+    background: #ffffff;
+    margin: 15px auto;
+    box-shadow: 0 0 15px #fff;
+    opacity: 0.5;
+}
+
+.apple-subtext {
+    position: relative;
+    z-index: 10;
+    color: #666;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+/* --- Premium Buton --- */
+.apple-btn-premium {
+    margin-top: 30px;
+    padding: 12px 35px;
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 50px;
+    color: #eee;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.apple-btn-premium:hover {
+    background: #ffffff;
+    color: #000;
+    border-color: #ffffff;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+/* --- Animasyonlar --- */
+@keyframes appleFloat {
+    0%, 100% { transform: translateY(0) rotateX(0deg); }
+    50% { transform: translateY(-20px) rotateX(5deg); }
+}
+
+@keyframes shimmerSweep {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(50%, 50%) rotate(0deg); }
+}
+
+/* Mobilde uyum sağlaması için */
+@media (max-width: 768px) {
+    .apple-title-new { font-size: 2rem; letter-spacing: 4px; }
+    .apple-pro-card { width: 140px; height: 140px; }
+}
+
+/* =========================================
+   --- ACER PROFESYONEL TECH CORE STİLİ ---
+   ========================================= */
+
+/* --- Ana Sahne --- */
+.acer-pro-stage {
+    background: radial-gradient(circle at center, #0a0f05 0%, #000000 100%);
+    min-height: 500px; /* Diğer markalarla dengeli yükseklik */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 50px 20px;
+}
+
+/* --- Devre Kartı Arka Planı --- */
+.acer-circuit-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(131, 184, 26, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(131, 184, 26, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    z-index: 1;
+}
+
+/* --- Merkez Teknoloji Ünitesi --- */
+.acer-tech-core {
+    position: relative;
+    width: 280px; /* Apple kartı veya Dell reaktörü ile benzer kapladığı alan */
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+/* --- Mekanik Halkalar (Daha net ve geometrik) --- */
+.tech-ring {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(131, 184, 26, 0.2);
+}
+
+.ring-outer {
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(131, 184, 26, 0.3);
+    border-top-color: #83b81a;
+    border-bottom-color: #83b81a;
+    animation: techSpin 12s linear infinite;
+}
+
+.ring-inner {
+    width: 75%;
+    height: 75%;
+    border: 2px dashed #83b81a;
+    opacity: 0.6;
+    animation: techSpin 8s linear infinite reverse;
+}
+
+/* --- Yazı Stili (DİĞERLERİYLE AYNI BOYUTTA) --- */
+.acer-text-hologram {
+    position: relative;
+    z-index: 20;
+}
+
+.acer-pro-title {
+    /* Boyut diğer markalarla (örn: Lenovo 4.5rem, HP 5rem) dengelendi */
+    font-size: 4rem; 
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 4px;
+    margin: 0;
+    position: relative;
+    text-transform: uppercase;
+    /* Profesyonel, net parlama */
+    text-shadow: 0 0 20px rgba(131, 184, 26, 0.6);
+}
+
+/* Yazının arkasındaki sabit "tech" katmanı (Glitch yerine netlik) */
+.acer-pro-title::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(131, 184, 26, 0.4);
+    z-index: -1;
+    transform: scale(1.05);
+    opacity: 0.5;
+}
+
+/* --- Lazer Tarama Efekti --- */
+.acer-laser-scan {
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent 0%, 
+        rgba(131, 184, 26, 0.1) 45%, 
+        rgba(131, 184, 26, 0.8) 50%, 
+        rgba(131, 184, 26, 0.1) 55%, 
+        transparent 100%
+    );
+    animation: laserPass 4s ease-in-out infinite;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
+
+/* --- Alt Bilgi ve Buton --- */
+.acer-pro-info {
+    text-align: center;
+    margin-top: 40px;
+    z-index: 10;
+}
+
+.acer-pro-tagline {
+    color: #a1a1a6; /* Daha kurumsal gri */
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.acer-pro-btn {
+    padding: 12px 40px;
+    background: transparent;
+    border: 1px solid #83b81a;
+    color: #83b81a;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px; /* Daha keskin köşeler */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.acer-pro-btn:hover {
+    background: #83b81a;
+    color: #000;
+    box-shadow: 0 0 40px rgba(131, 184, 26, 0.4);
+}
+
+/* --- Animasyonlar --- */
+@keyframes techSpin { to { transform: rotate(360deg); } }
+@keyframes laserPass { 
+    0% { transform: translateX(-30%) skewX(-20deg); }
+    100% { transform: translateX(30%) skewX(-20deg); }
 }
