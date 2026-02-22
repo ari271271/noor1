@@ -1320,13 +1320,13 @@ body.rtl .dropdown-menu {
 }
 
 /* =========================================
-   --- ACER PROFESYONEL TECH CORE STİLİ ---
+   --- ACER PROFESYONEL TECH CORE (EFSANE) ---
    ========================================= */
 
-/* --- Ana Sahne --- */
+/* Sahne Ayarları: Her şeyi tam ortalar */
 .acer-pro-stage {
     background: radial-gradient(circle at center, #0a0f05 0%, #000000 100%);
-    min-height: 500px; /* Diğer markalarla dengeli yükseklik */
+    min-height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1336,7 +1336,7 @@ body.rtl .dropdown-menu {
     padding: 50px 20px;
 }
 
-/* --- Devre Kartı Arka Planı --- */
+/* Arka plan: Dijital devre ızgarası */
 .acer-circuit-grid {
     position: absolute;
     inset: 0;
@@ -1348,73 +1348,59 @@ body.rtl .dropdown-menu {
     z-index: 1;
 }
 
-/* --- Merkez Teknoloji Ünitesi --- */
+/* Merkez Çekirdek: Diğer markalarla orantılı boyut */
 .acer-tech-core {
     position: relative;
-    width: 280px; /* Apple kartı veya Dell reaktörü ile benzer kapladığı alan */
-    height: 280px;
+    width: 300px;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 10;
 }
 
-/* --- Mekanik Halkalar (Daha net ve geometrik) --- */
+/* Dönen Halkalar */
 .tech-ring {
     position: absolute;
     border-radius: 50%;
-    box-shadow: 0 0 15px rgba(131, 184, 26, 0.2);
+    box-shadow: 0 0 20px rgba(131, 184, 26, 0.2);
 }
 
 .ring-outer {
     width: 100%;
     height: 100%;
-    border: 2px solid rgba(131, 184, 26, 0.3);
+    border: 2px solid rgba(131, 184, 26, 0.2);
     border-top-color: #83b81a;
     border-bottom-color: #83b81a;
-    animation: techSpin 12s linear infinite;
+    animation: techSpin 10s linear infinite;
 }
 
 .ring-inner {
-    width: 75%;
-    height: 75%;
-    border: 2px dashed #83b81a;
-    opacity: 0.6;
-    animation: techSpin 8s linear infinite reverse;
+    width: 70%;
+    height: 70%;
+    border: 2px dashed rgba(131, 184, 26, 0.5);
+    animation: techSpin 6s linear infinite reverse;
 }
 
-/* --- Yazı Stili (DİĞERLERİYLE AYNI BOYUTTA) --- */
+/* Yazı ve Lazer Grubu */
 .acer-text-hologram {
     position: relative;
     z-index: 20;
+    text-align: center;
 }
 
 .acer-pro-title {
-    /* Boyut diğer markalarla (örn: Lenovo 4.5rem, HP 5rem) dengelendi */
-    font-size: 4rem; 
+    font-size: 4.5rem; 
     font-weight: 900;
     color: #ffffff;
-    letter-spacing: 4px;
+    letter-spacing: 6px;
     margin: 0;
-    position: relative;
+    font-style: italic;
     text-transform: uppercase;
-    /* Profesyonel, net parlama */
-    text-shadow: 0 0 20px rgba(131, 184, 26, 0.6);
+    text-shadow: 0 0 30px rgba(131, 184, 26, 0.6);
 }
 
-/* Yazının arkasındaki sabit "tech" katmanı (Glitch yerine netlik) */
-.acer-pro-title::before {
-    content: attr(data-text);
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    color: transparent;
-    -webkit-text-stroke: 2px rgba(131, 184, 26, 0.4);
-    z-index: -1;
-    transform: scale(1.05);
-    opacity: 0.5;
-}
-
-/* --- Lazer Tarama Efekti --- */
+/* Git-Gel Yapan Lazer Işığı */
 .acer-laser-scan {
     position: absolute;
     top: 0;
@@ -1425,16 +1411,17 @@ body.rtl .dropdown-menu {
         90deg, 
         transparent 0%, 
         rgba(131, 184, 26, 0.1) 45%, 
-        rgba(131, 184, 26, 0.8) 50%, 
+        rgba(131, 184, 26, 0.9) 50%, 
         rgba(131, 184, 26, 0.1) 55%, 
         transparent 100%
     );
-    animation: laserPass 4s ease-in-out infinite;
+    /* 'alternate' sayesinde sağa gider ve geri döner */
+    animation: laserPass 3s ease-in-out infinite alternate; 
     mix-blend-mode: overlay;
     pointer-events: none;
 }
 
-/* --- Alt Bilgi ve Buton --- */
+/* Bilgi Yazısı ve Buton */
 .acer-pro-info {
     text-align: center;
     margin-top: 40px;
@@ -1442,37 +1429,43 @@ body.rtl .dropdown-menu {
 }
 
 .acer-pro-tagline {
-    color: #a1a1a6; /* Daha kurumsal gri */
+    color: #a1a1a6;
     font-size: 0.9rem;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
     text-transform: uppercase;
     margin-bottom: 20px;
 }
 
 .acer-pro-btn {
-    padding: 12px 40px;
+    padding: 12px 45px;
     background: transparent;
     border: 1px solid #83b81a;
     color: #83b81a;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
-    border-radius: 4px; /* Daha keskin köşeler */
+    border-radius: 4px;
     transition: all 0.3s ease;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
 }
 
 .acer-pro-btn:hover {
     background: #83b81a;
     color: #000;
-    box-shadow: 0 0 40px rgba(131, 184, 26, 0.4);
+    box-shadow: 0 0 40px rgba(131, 184, 26, 0.5);
+    transform: scale(1.05);
 }
 
-/* --- Animasyonlar --- */
+/* Keyframes */
 @keyframes techSpin { to { transform: rotate(360deg); } }
+
 @keyframes laserPass { 
-    0% { transform: translateX(-30%) skewX(-20deg); }
-    100% { transform: translateX(30%) skewX(-20deg); }
+    0% { transform: translateX(-40%) skewX(-20deg); opacity: 0.5; }
+    100% { transform: translateX(40%) skewX(-20deg); opacity: 1; }
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .acer-pro-title { font-size: 2.8rem; letter-spacing: 3px; }
+    .acer-tech-core { width: 220px; height: 220px; }
 }
