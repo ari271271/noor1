@@ -14,11 +14,15 @@ const translations = {
         comp_card_2: "Second Hand Computer",
         comp_card_3: "Cooler Pad",
         back_to_comp: "Back to Computer",
+        back_to_brands: "Back to Brands",
         
         laptop_cooling_pad: "Laptop Cooling Pad",
         features: "Features",
         fan_1: "1 Fan",
         fan_2: "2 Fans",
+        feat_touch: " (Touch Screen)",
+        btn_whatsapp: "WhatsApp",
+        select_language: "Select Language",
         
         fiber_title: "Fiber Optic Infrastructure", fiber_desc: "Speed of light data transmission. Secure, scalable, and built for the future.",
         fiber_why_title: "Why Choose Fiber?",
@@ -37,6 +41,8 @@ const translations = {
         lbl_name: "Full Name", lbl_email: "Email Address", lbl_message: "Message", btn_submit: "SEND MESSAGE",
         footer_desc: "At the heart of technology, at the peak of speed. Professional computer and fiber optic solutions.",
         footer_links: "Quick Links", footer_contact: "Contact", footer_follow: "Follow Us",
+        footer_address: "Technology Dist. sultan muthafer St. Erbil, Iraq",
+        footer_rights: "© 2002 NOOR NETWORK. All rights reserved.",
         val_required: "This field is required", val_email_error: "Invalid email"
     },
     tr: {
@@ -54,11 +60,15 @@ const translations = {
         comp_card_2: "İkinci El Bilgisayar",
         comp_card_3: "Soğutucu Pad",
         back_to_comp: "Bilgisayarlara Dön",
+        back_to_brands: "Markalara Dön",
         
         laptop_cooling_pad: "Laptop Soğutucu",
         features: "Özellikler",
         fan_1: "1 Fanlı",
         fan_2: "2 Fanlı",
+        feat_touch: " (Dokunmatik Ekran)",
+        btn_whatsapp: "WhatsApp",
+        select_language: "Dil Seçin",
         
         fiber_title: "Fiber Optik Altyapı", fiber_desc: "Işık hızında veri iletimi. Güvenli, ölçeklenebilir ve gelecek için inşa edildi.",
         fiber_why_title: "Neden Fiber?",
@@ -77,6 +87,8 @@ const translations = {
         lbl_name: "Ad Soyad", lbl_email: "E-posta Adresi", lbl_message: "Mesaj", btn_submit: "MESAJ GÖNDER",
         footer_desc: "Teknolojinin kalbinde, hızın zirvesinde. Profesyonel bilgisayar ve fiber optik çözümleri.",
         footer_links: "Hızlı Bağlantılar", footer_contact: "İletişim", footer_follow: "Bizi Takip Edin",
+        footer_address: "Teknoloji Bölgesi Sultan Muzaffer Cd. Erbil, Irak",
+        footer_rights: "© 2002 NOOR NETWORK. Tüm hakları saklıdır.",
         val_required: "Bu alan zorunludur", val_email_error: "Geçersiz e-posta"
     },
     ar: {
@@ -94,11 +106,15 @@ const translations = {
         comp_card_2: "كمبيوتر مستعمل",
         comp_card_3: "حامل تبريد",
         back_to_comp: "العودة إلى الكمبيوتر",
+        back_to_brands: "العودة إلى الماركات",
         
         laptop_cooling_pad: "حامل تبريد اللابتوب",
         features: "المميزات",
         fan_1: "مروحة واحدة",
         fan_2: "مروحتان",
+        feat_touch: " (شاشة تعمل باللمس)",
+        btn_whatsapp: "واتساب",
+        select_language: "اختر اللغة",
         
         fiber_title: "البنية التحتية للألياف الضوئية", fiber_desc: "نقل البيانات بسرعة الضوء. آمنة، وقابلة للتطوير، ومبنية للمستقبل.",
         fiber_why_title: "لماذا تختار الألياف؟",
@@ -111,12 +127,14 @@ const translations = {
         
         soon_title: "قريباً", soon_desc: "نحن نستعد لعرض أحدث مشاريعنا ومراجعنا هنا.",
         about_title: "من نحن", about_subtitle: "تأسست نور نتورك في عام 2002 برؤية تهدف إلى تبسيط التكنولوجيا وجعل الاتصال في متناول الجميع.",
-        mission_title: "مهمتنا", mission_desc: "توفير حلول موثوقة ومبتكرة ومستدامة للاحتياجات الرقمية لعملائنا من خلال تقديم أجهزة كمبيوتر جديدة ومستعملة.",
-        vision_title: "رؤيتنا", vision_desc: "أن نكون علامة تجارية قوية قادرة على المنافسة في السوق الدولية ورائدة على المستوى الوطني.",
+        mission_title: "مهمتنا", mission_desc: "توفير حلول موثوقة ومبتكرة ومستدامة للاحتياجات الرقمية لعملائنا من خلال تقديم أجهزة كمبيوتر جديدة ومستعملة وحلول بنية تحتية للألياف الضوئية عالية الأداء.",
+        vision_title: "رؤيتنا", vision_desc: "أن نكون علامة تجارية قوية قادرة على المنافسة في السوق الدولية ورائدة على المستوى الوطني في قطاع التكنولوجيا.",
         contact_form_title: "ابق على تواصل",
         lbl_name: "الاسم الكامل", lbl_email: "البريد الإلكتروني", lbl_message: "الرسالة", btn_submit: "إرسال رسالة",
         footer_desc: "في قلب التكنولوجيا، في قمة السرعة. حلول كمبيوتر وألياف ضوئية احترافية.",
         footer_links: "روابط سريعة", footer_contact: "اتصل بنا", footer_follow: "تابعنا",
+        footer_address: "حي التكنولوجيا، شارع سلطان مظفر، أربيل، العراق",
+        footer_rights: "© 2002 نور نتورك. جميع الحقوق محفوظة.",
         val_required: "هذا الحقل مطلوب", val_email_error: "بريد إلكتروني غير صالح"
     },
     ku: {
@@ -134,11 +152,15 @@ const translations = {
         comp_card_2: "کۆمپیوتەری بەکارهاتوو",
         comp_card_3: "پادی ساردکەرەوە",
         back_to_comp: "گەڕانەوە بۆ کۆمپیوتەر",
+        back_to_brands: "گەڕانەوە بۆ مارکەکان",
         
         laptop_cooling_pad: "ساردکەرەوەی لاپتۆپ",
         features: "تایبەتمەندییەکان",
         fan_1: "١ پانکە",
         fan_2: "٢ پانکە",
+        feat_touch: " (شاشەی لەمس)",
+        btn_whatsapp: "واتسئاپ",
+        select_language: "زمان هەڵبژێرە",
         
         fiber_title: "ژێرخانی فایبەر ئۆپتیک", fiber_desc: "گواستنەوەی داتا بە خێرایی ڕووناکی. پارێزراو و فراوان بۆ داهاتوو دروستکراوە.",
         fiber_why_title: "بۆچی فایبەر هەڵدەبژێریت؟",
@@ -151,12 +173,14 @@ const translations = {
         
         soon_title: "بەم زووانە", soon_desc: "ئێمە ئامادەکاری دەکەین بۆ خستنەڕووی نوێترین پڕۆژە و کارەکانمان لێرە.",
         about_title: "ئێمە کێین", about_subtitle: "نوور نێتۆرک لە ساڵی ٢٠٠٢ دامەزراوە بە ئامانجی ئاسانکردنی تەکنەلۆجیا.",
-        mission_title: "ئەرکمان", mission_desc: "دابینکردنی چارەسەری متمانەپێکراو بۆ پێداویستییە دیجیتاڵییەکانی کڕیارانمان.",
+        mission_title: "ئەرکمان", mission_desc: "دابینکردنی چارەسەری متمانەپێکراو بۆ پێداویستییە دیجیتاڵییەکانی کڕیارانمان بە دابینکردنی کۆمپیوتەری نوێ و بەکارهاتوو.",
         vision_title: "دیدگامان", vision_desc: "ببین بە براندێکی بەهێز کە توانای کێبڕکێی هەبێت لە بازاڕی نێودەوڵەتیدا.",
         contact_form_title: "پەیوەندیمان پێوە بکە",
         lbl_name: "ناوی تەواو", lbl_email: "ئیمەیڵ", lbl_message: "نامە", btn_submit: "ناردنی نامە",
         footer_desc: "لە دڵی تەکنەلۆجیادا، لە لوتکەی خێراییدا. باشترین چارەسەری کۆمپیوتەر و فایبەر ئۆپتیک.",
         footer_links: "بەستەرە خێراکان", footer_contact: "پەیوەندی", footer_follow: "فۆڵۆومان بکە",
+        footer_address: "گەڕەکی تەکنەلۆژیا، شەقامی سوڵتان موزەفەر، هەولێر، عێراق",
+        footer_rights: "© ٢٠٠٢ نور نێتۆرک. هەموو مافەکان پارێزراون.",
         val_required: "ئەم بوارە داواکراوە", val_email_error: "ئیمەیڵەکە هەڵەیە"
     }
 };
