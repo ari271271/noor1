@@ -1320,3 +1320,151 @@ body.rtl .dropdown-menu {
     .apple-title-new { font-size: 2rem; letter-spacing: 4px; }
     .apple-pro-card { width: 140px; height: 140px; }
 }
+
+    /* =========================================
+    --- COMPUTER CASE - PREMIUM HERO ANIMATION ---
+    ========================================= */
+    .case-hero-section {
+        background: radial-gradient(circle at bottom right, #0b0f19 0%, #1a1525 50%, #050508 100%) !important;
+    }
+
+    .case-ambient-glow-1 {
+        position: absolute; top: -10%; right: 10%; width: 50vw; height: 50vw;
+        background: radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%);
+        filter: blur(60px); animation: floatGlow 8s infinite alternate; pointer-events: none;
+    }
+
+    .case-ambient-glow-2 {
+        position: absolute; bottom: -20%; left: -10%; width: 60vw; height: 60vw;
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        filter: blur(80px); animation: floatGlow 12s infinite alternate-reverse; pointer-events: none;
+    }
+
+    .case-grid-overlay {
+        position: absolute; inset: 0;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 50px 50px; pointer-events: none;
+        mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+        -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+    }
+
+    .case-btn-back {
+        background: rgba(255, 255, 255, 0.05); color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 12px 30px; border-radius: 50px;
+        transition: all 0.4s ease; text-transform: uppercase;
+        letter-spacing: 1px; font-size: 0.85rem; font-weight: 600;
+        backdrop-filter: blur(10px);
+    }
+    .case-btn-back:hover {
+        background: #fff; color: #000; border-color: #fff;
+        box-shadow: 0 0 20px rgba(255,255,255,0.4); transform: translateY(-2px);
+    }
+
+    /* Kasa Gövdesi */
+    .css-pc-case {
+        width: 240px; height: 320px;
+        background: #111; border-radius: 8px;
+        border: 2px solid #333; border-right: 12px solid #0a0a0a; /* Ön Mesh Panel */
+        border-bottom: 25px solid #0a0a0a; /* PSU Örtüsü */
+        position: relative;
+        transform: perspective(1000px) rotateY(-20deg) scale(0.9);
+        box-shadow: -30px 30px 60px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,0,0,0.9);
+        animation: slideInRightPC 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        opacity: 0; transform-style: preserve-3d;
+    }
+
+    @media (min-width: 768px) {
+        .css-pc-case { width: 280px; height: 380px; transform: perspective(1000px) rotateY(-25deg) scale(1); }
+    }
+
+    @keyframes slideInRightPC {
+        0% { opacity: 0; transform: perspective(1000px) rotateY(-25deg) translateX(300px); }
+        100% { opacity: 1; transform: perspective(1000px) rotateY(-25deg) translateX(0); }
+    }
+
+    /* Şeffaf Yan Cam Panel */
+    .case-glass {
+        position: absolute; inset: 5px;
+        border: 2px solid rgba(255,255,255,0.1);
+        background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        border-radius: 4px; overflow: hidden; display: flex;
+    }
+
+    /* Cam Yansıması */
+    .glass-reflection {
+        position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+        background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.03) 48%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.03) 52%, transparent 55%);
+        transform: rotate(30deg); animation: glassShine 7s infinite linear; pointer-events: none; z-index: 10;
+    }
+    @keyframes glassShine { 0% { transform: translateY(-100%) rotate(30deg); } 100% { transform: translateY(100%) rotate(30deg); } }
+
+    /* İç Donanım: GPU ve RAM */
+    .case-internals { position: absolute; left: 10px; top: 30px; bottom: 5px; right: 70px; z-index: 1; }
+
+    .case-gpu {
+        position: absolute; top: 60%; left: 0; width: 140px; height: 25px;
+        background: #1a1a1a; border-left: 2px solid #555; border-bottom: 2px solid #333;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.9); display: flex; align-items: center;
+        padding-left: 10px; border-radius: 2px;
+    }
+    .gpu-text {
+        color: #fff; font-size: 9px; font-weight: 800; font-family: monospace; letter-spacing: 2px;
+        text-shadow: 0 0 10px #fff; animation: rgbGPUText 4s infinite alternate;
+    }
+
+    .case-ram {
+        position: absolute; top: 10%; left: 60px; width: 6px; height: 45px;
+        background: #222; box-shadow: 12px 0 0 #222;
+    }
+    .case-ram::after {
+        content: ''; position: absolute; top: -2px; left: 0; width: 6px; height: 4px;
+        background: #fff; box-shadow: 12px 0 0 #fff; border-radius: 2px;
+        animation: rgbRamGlow 4s infinite linear;
+    }
+
+    /* RGB Fanlar */
+    .case-front-fans { position: absolute; right: 5px; top: 5px; bottom: 5px; width: 50px; display: flex; flex-direction: column; justify-content: space-around; z-index: 2; }
+    .case-rear-fan { position: absolute; left: 5px; top: 15px; width: 45px; height: 45px; z-index: 2; }
+
+    @media (min-width: 768px) {
+        .case-front-fans { width: 60px; }
+        .case-rear-fan { width: 55px; height: 55px; }
+    }
+
+    .css-fan {
+        width: 100%; aspect-ratio: 1/1; border-radius: 50%; border: 2px solid rgba(255,255,255,0.05);
+        background: conic-gradient(from 0deg, transparent 0%, rgba(255,255,255,0.3) 20%, transparent 40%, rgba(255,255,255,0.3) 60%, transparent 80%);
+        animation: spinFanPC 1.2s linear infinite, rgbFanColor 6s infinite linear;
+        box-shadow: inset 0 0 15px currentColor, 0 0 25px currentColor; position: relative;
+    }
+    .css-fan::after {
+        content:''; position: absolute; top:50%; left:50%; transform: translate(-50%,-50%);
+        width: 30%; height: 30%; background: #111; border-radius: 50%; border: 1px solid #333;
+    }
+
+    .small-fan { aspect-ratio: 1/1; }
+    .delay-fan-2 { animation-delay: -1s, -2s; }
+    .delay-fan-3 { animation-delay: -2s, -4s; }
+
+    /* Kasa Ayakları */
+    .case-foot-front, .case-foot-back { position: absolute; bottom: -8px; width: 25px; height: 8px; background: #333; border-radius: 0 0 4px 4px; }
+    .case-foot-front { right: 15px; }
+    .case-foot-back { left: 15px; }
+
+    /* Keyframes */
+    @keyframes spinFanPC { to { transform: rotate(360deg); } }
+    @keyframes floatGlow { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(-30px) scale(1.1); } }
+    @keyframes rgbFanColor { 
+        0% { color: #ec4899; } /* Pink */
+        33% { color: #8b5cf6; } /* Blue */
+        66% { color: #06b6d4; } /* Cyan */
+        100% { color: #ec4899; } /* Pink */
+    }
+    @keyframes rgbRamGlow {
+        0% { box-shadow: 0 0 10px #ec4899, 12px 0 10px #8b5cf6; background: #ec4899; filter: hue-rotate(0deg); }
+        100% { box-shadow: 0 0 10px #ec4899, 12px 0 10px #8b5cf6; background: #ec4899; filter: hue-rotate(360deg); }
+    }
+    @keyframes rgbGPUText { 0%{color:#06b6d4; text-shadow:0 0 8px #06b6d4;} 100%{color:#ec4899; text-shadow:0 0 8px #ec4899;} }
