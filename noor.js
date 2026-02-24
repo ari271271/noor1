@@ -13,6 +13,7 @@ const translations = {
         comp_card_1: "New Laptop",
         comp_card_2: "Second Hand Computer",
         comp_card_3: "Cooler Pad",
+        comp_card_4: "Computer Case",
         back_to_comp: "Back to Computer",
         back_to_brands: "Back to Brands",
         
@@ -59,6 +60,7 @@ const translations = {
         comp_card_1: "Sıfır Laptop",
         comp_card_2: "İkinci El Bilgisayar",
         comp_card_3: "Soğutucu Pad",
+        comp_card_4: "Bilgisayar Kasası",
         back_to_comp: "Bilgisayarlara Dön",
         back_to_brands: "Markalara Dön",
         
@@ -105,6 +107,7 @@ const translations = {
         comp_card_1: "لابتوب جديد",
         comp_card_2: "كمبيوتر مستعمل",
         comp_card_3: "حامل تبريد",
+        comp_card_4: "صندوق الكمبيوتر",
         back_to_comp: "العودة إلى الكمبيوتر",
         back_to_brands: "العودة إلى الماركات",
         
@@ -151,6 +154,7 @@ const translations = {
         comp_card_1: "لاپتۆپی نوێ",
         comp_card_2: "کۆمپیوتەری بەکارهاتوو",
         comp_card_3: "پادی ساردکەرەوە",
+        comp_card_4: "کەیسی کۆمپیوتەر",
         back_to_comp: "گەڕانەوە بۆ کۆمپیوتەر",
         back_to_brands: "گەڕانەوە بۆ مارکەکان",
         
@@ -307,4 +311,40 @@ window.onclick = function(event) {
         const dropdown = document.getElementById('lang-dropdown');
         if (dropdown && dropdown.classList.contains('show')) dropdown.classList.remove('show');
     }
+}
+
+// ----------------------------------------------------
+// Bilgisayar Kasası Sayfa Değiştirme Fonksiyonu
+// ----------------------------------------------------
+function switchCasePage(pageNum) {
+    const page1 = document.getElementById('case-page-1');
+    const page2 = document.getElementById('case-page-2');
+    const btn1 = document.getElementById('btn-page-1');
+    const btn2 = document.getElementById('btn-page-2');
+
+    if (pageNum === 1) {
+        // Sayfa 1'i göster, Sayfa 2'yi gizle
+        page1.classList.remove('hidden');
+        page1.classList.add('flex');
+        page2.classList.add('hidden');
+        page2.classList.remove('flex');
+        
+        // Buton 1'i Mavi (Aktif), Buton 2'yi Beyaz yap
+        btn1.className = "w-12 h-12 rounded-xl font-bold transition-all bg-blue-600 text-white shadow-lg transform hover:scale-105";
+        btn2.className = "w-12 h-12 rounded-xl font-bold transition-all bg-white border border-gray-200 text-gray-600 hover:bg-blue-50 hover:text-blue-600 shadow-sm transform hover:scale-105";
+    } else {
+        // Sayfa 2'yi göster, Sayfa 1'i gizle
+        page2.classList.remove('hidden');
+        page2.classList.add('flex');
+        page1.classList.add('hidden');
+        page1.classList.remove('flex');
+        
+        // Buton 2'yi Mavi (Aktif), Buton 1'i Beyaz yap
+        btn2.className = "w-12 h-12 rounded-xl font-bold transition-all bg-blue-600 text-white shadow-lg transform hover:scale-105";
+        btn1.className = "w-12 h-12 rounded-xl font-bold transition-all bg-white border border-gray-200 text-gray-600 hover:bg-blue-50 hover:text-blue-600 shadow-sm transform hover:scale-105";
+    }
+
+    // Tıklandığında ekranı ürünlerin en üstüne kaydır (Kullanıcı aşağıda kalmasın diye)
+    const sectionTop = document.getElementById('comp_case').querySelector('.bg-\\[\\#f8f9fc\\]').offsetTop;
+    window.scrollTo({ top: sectionTop - 100, behavior: 'smooth' });
 }
