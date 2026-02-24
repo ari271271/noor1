@@ -1321,150 +1321,122 @@ body.rtl .dropdown-menu {
     .apple-pro-card { width: 140px; height: 140px; }
 }
 
-    /* =========================================
-    --- COMPUTER CASE - PREMIUM HERO ANIMATION ---
-    ========================================= */
-    .case-hero-section {
-        background: radial-gradient(circle at bottom right, #0b0f19 0%, #1a1525 50%, #050508 100%) !important;
-    }
+  /* =========================================
+   --- ULTRA ŞEFFAF & AYDINLIK PC KASASI ---
+   ========================================= */
 
-    .case-ambient-glow-1 {
-        position: absolute; top: -10%; right: 10%; width: 50vw; height: 50vw;
-        background: radial-gradient(circle, rgba(147, 51, 234, 0.15) 0%, transparent 70%);
-        filter: blur(60px); animation: floatGlow 8s infinite alternate; pointer-events: none;
-    }
+.case-hero-section {
+    background: #050507 !important;
+}
 
-    .case-ambient-glow-2 {
-        position: absolute; bottom: -20%; left: -10%; width: 60vw; height: 60vw;
-        background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-        filter: blur(80px); animation: floatGlow 12s infinite alternate-reverse; pointer-events: none;
-    }
+/* Kasa Dış İskelet */
+.css-pc-case {
+    width: 260px; height: 350px;
+    background: #0d0d0d; border-radius: 10px;
+    border: 3px solid #222;
+    position: relative;
+    transform: perspective(1500px) rotateY(-20deg);
+    box-shadow: -50px 40px 100px rgba(0,0,0,0.9);
+    animation: caseEntry 1.2s ease-out forwards;
+    transform-style: preserve-3d;
+}
 
-    .case-grid-overlay {
-        position: absolute; inset: 0;
-        background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-        background-size: 50px 50px; pointer-events: none;
-        mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
-        -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
-    }
+@media (min-width: 768px) { .css-pc-case { width: 310px; height: 420px; } }
 
-    .case-btn-back {
-        background: rgba(255, 255, 255, 0.05); color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        padding: 12px 30px; border-radius: 50px;
-        transition: all 0.4s ease; text-transform: uppercase;
-        letter-spacing: 1px; font-size: 0.85rem; font-weight: 600;
-        backdrop-filter: blur(10px);
-    }
-    .case-btn-back:hover {
-        background: #fff; color: #000; border-color: #fff;
-        box-shadow: 0 0 20px rgba(255,255,255,0.4); transform: translateY(-2px);
-    }
+/* İÇ MEKAN: Aydınlık ve Şeffaf Bölme */
+.case-chamber {
+    position: absolute; inset: 4px 60px 40px 4px;
+    background: #151518; /* İç duvarları biraz gri yaptık ki derinlik görünsün */
+    border-radius: 4px;
+    box-shadow: inset 10px 10px 40px rgba(0,0,0,0.8);
+    overflow: hidden;
+}
 
-    /* Kasa Gövdesi */
-    .css-pc-case {
-        width: 240px; height: 320px;
-        background: #111; border-radius: 8px;
-        border: 2px solid #333; border-right: 12px solid #0a0a0a; /* Ön Mesh Panel */
-        border-bottom: 25px solid #0a0a0a; /* PSU Örtüsü */
-        position: relative;
-        transform: perspective(1000px) rotateY(-20deg) scale(0.9);
-        box-shadow: -30px 30px 60px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,0,0,0.9);
-        animation: slideInRightPC 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        opacity: 0; transform-style: preserve-3d;
-    }
+/* Anakart Detayı */
+.motherboard-bg {
+    position: absolute; inset: 10px;
+    background: linear-gradient(135deg, #111 25%, transparent 25%) -10px 0,
+                linear-gradient(225deg, #111 25%, transparent 25%) -10px 0,
+                #18181b;
+    background-size: 20px 20px; opacity: 0.3;
+}
 
-    @media (min-width: 768px) {
-        .css-pc-case { width: 280px; height: 380px; transform: perspective(1000px) rotateY(-25deg) scale(1); }
-    }
+/* Üst LED Şeridi (Tüm kasayı aydınlatan ana ışık) */
+.internal-led-strip {
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #00f2ff, #7000ff, #ff00c8);
+    box-shadow: 0 5px 25px currentColor; filter: brightness(1.5);
+    z-index: 10;
+}
 
-    @keyframes slideInRightPC {
-        0% { opacity: 0; transform: perspective(1000px) rotateY(-25deg) translateX(300px); }
-        100% { opacity: 1; transform: perspective(1000px) rotateY(-25deg) translateX(0); }
-    }
+/* Cam Panel - Tamamen Şeffaf */
+.case-tempered-glass {
+    position: absolute; inset: 0;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 20; pointer-events: none; border-radius: 8px;
+}
 
-    /* Şeffaf Yan Cam Panel */
-    .case-glass {
-        position: absolute; inset: 5px;
-        border: 2px solid rgba(255,255,255,0.1);
-        background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(3px);
-        -webkit-backdrop-filter: blur(3px);
-        border-radius: 4px; overflow: hidden; display: flex;
-    }
+/* Cam üzerindeki ışık hüzmesi */
+.glass-glare {
+    position: absolute; top: -100%; left: -100%; width: 300%; height: 300%;
+    background: linear-gradient(135deg, transparent 48%, rgba(255,255,255,0.07) 50%, transparent 52%);
+    animation: glareAnim 6s infinite ease-in-out;
+}
 
-    /* Cam Yansıması */
-    .glass-reflection {
-        position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-        background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.03) 48%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.03) 52%, transparent 55%);
-        transform: rotate(30deg); animation: glassShine 7s infinite linear; pointer-events: none; z-index: 10;
-    }
-    @keyframes glassShine { 0% { transform: translateY(-100%) rotate(30deg); } 100% { transform: translateY(100%) rotate(30deg); } }
+/* EKRAN KARTI (Büyük ve Parlak) */
+.case-gpu-ultra {
+    position: absolute; top: 55%; left: 15px; width: 180px; height: 35px;
+    background: #25252a; border-radius: 4px;
+    border-top: 1px solid #444; border-right: 3px solid #111;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+    display: flex; align-items: center; justify-content: center; z-index: 5;
+}
 
-    /* İç Donanım: GPU ve RAM */
-    .case-internals { position: absolute; left: 10px; top: 30px; bottom: 5px; right: 70px; z-index: 1; }
+.gpu-brand {
+    font-size: 9px; font-weight: 900; color: #fff; letter-spacing: 1px;
+    text-shadow: 0 0 10px #00f2ff; animation: gpuGlow 3s infinite alternate;
+}
 
-    .case-gpu {
-        position: absolute; top: 60%; left: 0; width: 140px; height: 25px;
-        background: #1a1a1a; border-left: 2px solid #555; border-bottom: 2px solid #333;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.9); display: flex; align-items: center;
-        padding-left: 10px; border-radius: 2px;
-    }
-    .gpu-text {
-        color: #fff; font-size: 9px; font-weight: 800; font-family: monospace; letter-spacing: 2px;
-        text-shadow: 0 0 10px #fff; animation: rgbGPUText 4s infinite alternate;
-    }
+/* RAM'LER (RGB Şeritli) */
+.ram-slot {
+    position: absolute; top: 15%; left: 100px; width: 8px; height: 60px;
+    background: #0a0a0a; border-radius: 2px;
+}
+.ram-slot:nth-child(2) { left: 115px; }
+.ram-slot::after {
+    content: ''; position: absolute; top: 0; width: 100%; height: 15px;
+    background: #00f2ff; box-shadow: 0 0 15px #00f2ff; border-radius: 2px;
+    animation: ramRGB 4s infinite linear;
+}
 
-    .case-ram {
-        position: absolute; top: 10%; left: 60px; width: 6px; height: 45px;
-        background: #222; box-shadow: 12px 0 0 #222;
-    }
-    .case-ram::after {
-        content: ''; position: absolute; top: -2px; left: 0; width: 6px; height: 4px;
-        background: #fff; box-shadow: 12px 0 0 #fff; border-radius: 2px;
-        animation: rgbRamGlow 4s infinite linear;
-    }
+/* RGB FANLAR */
+.front-rgb-fan, .fan-spinner {
+    width: 60px; height: 60px; border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent, currentColor, transparent);
+    animation: fanSpin 0.6s linear infinite, rgbShift 5s infinite linear;
+    filter: drop-shadow(0 0 15px currentColor);
+}
 
-    /* RGB Fanlar */
-    .case-front-fans { position: absolute; right: 5px; top: 5px; bottom: 5px; width: 50px; display: flex; flex-direction: column; justify-content: space-around; z-index: 2; }
-    .case-rear-fan { position: absolute; left: 5px; top: 15px; width: 45px; height: 45px; z-index: 2; }
+.case-front-mesh {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 60px;
+    background: #050505; border-left: 2px solid #222;
+    display: flex; flex-direction: column; justify-content: space-around; align-items: center;
+}
 
-    @media (min-width: 768px) {
-        .case-front-fans { width: 60px; }
-        .case-rear-fan { width: 55px; height: 55px; }
-    }
+.rear-rgb-fan { position: absolute; left: 10px; top: 20px; transform: scale(0.75); }
 
-    .css-fan {
-        width: 100%; aspect-ratio: 1/1; border-radius: 50%; border: 2px solid rgba(255,255,255,0.05);
-        background: conic-gradient(from 0deg, transparent 0%, rgba(255,255,255,0.3) 20%, transparent 40%, rgba(255,255,255,0.3) 60%, transparent 80%);
-        animation: spinFanPC 1.2s linear infinite, rgbFanColor 6s infinite linear;
-        box-shadow: inset 0 0 15px currentColor, 0 0 25px currentColor; position: relative;
-    }
-    .css-fan::after {
-        content:''; position: absolute; top:50%; left:50%; transform: translate(-50%,-50%);
-        width: 30%; height: 30%; background: #111; border-radius: 50%; border: 1px solid #333;
-    }
+/* Animasyonlar */
+@keyframes caseEntry {
+    0% { opacity: 0; transform: perspective(1500px) rotateY(-20deg) translateX(200px) scale(0.8); }
+    100% { opacity: 1; transform: perspective(1500px) rotateY(-20deg) translateX(0) scale(1); }
+}
 
-    .small-fan { aspect-ratio: 1/1; }
-    .delay-fan-2 { animation-delay: -1s, -2s; }
-    .delay-fan-3 { animation-delay: -2s, -4s; }
+@keyframes fanSpin { to { transform: rotate(360deg); } }
+@keyframes glareAnim { 0% { transform: translate(-20%, -20%); } 100% { transform: translate(20%, 20%); } }
+@keyframes rgbShift { 0% { color: #00f2ff; } 33% { color: #7000ff; } 66% { color: #ff00c8; } 100% { color: #00f2ff; } }
+@keyframes gpuGlow { 0% { opacity: 0.5; } 100% { opacity: 1; } }
+@keyframes ramRGB { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
 
-    /* Kasa Ayakları */
-    .case-foot-front, .case-foot-back { position: absolute; bottom: -8px; width: 25px; height: 8px; background: #333; border-radius: 0 0 4px 4px; }
-    .case-foot-front { right: 15px; }
-    .case-foot-back { left: 15px; }
-
-    /* Keyframes */
-    @keyframes spinFanPC { to { transform: rotate(360deg); } }
-    @keyframes floatGlow { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(-30px) scale(1.1); } }
-    @keyframes rgbFanColor { 
-        0% { color: #ec4899; } /* Pink */
-        33% { color: #8b5cf6; } /* Blue */
-        66% { color: #06b6d4; } /* Cyan */
-        100% { color: #ec4899; } /* Pink */
-    }
-    @keyframes rgbRamGlow {
-        0% { box-shadow: 0 0 10px #ec4899, 12px 0 10px #8b5cf6; background: #ec4899; filter: hue-rotate(0deg); }
-        100% { box-shadow: 0 0 10px #ec4899, 12px 0 10px #8b5cf6; background: #ec4899; filter: hue-rotate(360deg); }
-    }
-    @keyframes rgbGPUText { 0%{color:#06b6d4; text-shadow:0 0 8px #06b6d4;} 100%{color:#ec4899; text-shadow:0 0 8px #ec4899;} }
+/* Ekran Işıkları (Arka Plan) */
+.case-ambient-glow-1 { position: absolute; top: 0; right: 0; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0, 242, 255, 0.05) 0%, transparent 70%); filter: blur(50px); }
