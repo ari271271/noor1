@@ -1321,4 +1321,164 @@ body.rtl .dropdown-menu {
     .apple-pro-card { width: 140px; height: 140px; }
 }
 
-    
+/* =========================================
+   --- PREMIUM 3D COMPUTER CASE (NO HTML CHANGE) ---
+   ========================================= */
+
+/* 1. Sahne (Kameranın Bakış Açısı) */
+.case-holo-stage {
+    position: relative;
+    width: 250px;
+    height: 380px;
+    perspective: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. Kasanın Ana İskeleti ve Kusursuz Dönüşü */
+.case-holo-tower {
+    position: relative;
+    width: 180px;
+    height: 320px;
+    transform-style: preserve-3d;
+    animation: smoothTowerSpin 20s linear infinite; /* Takılmayan ağır kurumsal dönüş */
+}
+
+/* 3. Füme Cam Yüzeyler (Parmaklık / Çizgi YOK, Premium Cam Görünümü) */
+.holo-face {
+    position: absolute;
+    /* Koyu mavi/siyah şeffaf cam dolgusu */
+    background: rgba(15, 23, 42, 0.6); 
+    /* Çok ince, lazer kesim hissiyatlı çerçeve */
+    border: 1px solid rgba(56, 189, 248, 0.4); 
+    /* Sadece kenarlarda hafif parlama */
+    box-shadow: inset 0 0 20px rgba(56, 189, 248, 0.15);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+/* 3D Geometri - Milimetrik Boyutlandırma */
+.face-front, .face-back { 
+    width: 180px; height: 320px; 
+}
+.face-right, .face-left { 
+    width: 160px; height: 320px; 
+    left: 10px; /* 180 - 160 / 2 */
+}
+.face-top, .face-bottom { 
+    width: 180px; height: 160px; 
+    top: 80px; /* 320 - 160 / 2 */
+}
+
+/* 3D Konumlandırma */
+.face-front  { transform: translateZ(80px); }
+.face-back   { transform: rotateY(180deg) translateZ(80px); }
+.face-right  { transform: rotateY(90deg) translateZ(90px); }
+.face-left   { transform: rotateY(-90deg) translateZ(90px); }
+.face-top    { transform: rotateX(90deg) translateZ(160px); }
+.face-bottom { transform: rotateX(-90deg) translateZ(160px); }
+
+/* ========================================================
+   --- İÇ DONANIM (HTML DEĞİŞTİRMEDEN CSS İLE DOLDURULDU) ---
+   ======================================================== */
+
+/* ANAKART BAZI (Arka camın hemen önüne monte edilmiş pano) */
+.face-back::before {
+    content: '';
+    position: absolute;
+    inset: 15px; /* Camdan 15px içeride */
+    background: rgba(10, 15, 30, 0.9);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    border-radius: 4px;
+    transform: translateZ(10px); /* Arka camdan azıcık kopartıp derinlik verdik */
+}
+
+/* SUNUCU TİPİ GPU / HIZLANDIRICI KART (Anakartın altından öne uzanır) */
+.face-back::after {
+    content: '';
+    position: absolute;
+    bottom: 30px; 
+    left: 50%;
+    margin-left: -65px; /* 130px genişliğin yarısı */
+    width: 130px; 
+    height: 55px;
+    /* Kapalı ve ağır bir metal blok hissi */
+    background: linear-gradient(90deg, rgba(15,23,42,1), rgba(14, 165, 233, 0.2));
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-left: 3px solid #22d3ee; /* Uç kısımdaki parlak mavi gösterge */
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.6);
+    /* Kartı anakarttan bize doğru (Z ekseninde) uzatıyoruz */
+    transform: translateZ(35px); 
+}
+
+/* MERKEZ CPU / SIVI SOĞUTMA ÇEKİRDEĞİ (.holo-core-glow classı kullanılarak) */
+.holo-core-glow {
+    position: absolute;
+    top: 25%; left: 50%;
+    margin-left: -35px; /* 70px genişliğin yarısı ortalamak için */
+    width: 70px; height: 70px;
+    background: rgba(15, 23, 42, 0.95);
+    border: 2px solid #0ea5e9;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(14, 165, 233, 0.6), inset 0 0 10px #0ea5e9;
+    /* Anakartın üzerinde asılı duruyor */
+    transform: translateZ(-20px); 
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* CPU Çekirdeği İçinde Dönen Dijital Halka */
+.holo-core-glow::before {
+    content: '';
+    position: absolute;
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    border: 2px dashed #a5f3fc;
+    animation: hardwareSpin 4s linear infinite;
+}
+
+/* İÇERİDEKİ VERİ TARAYICI IŞIK (.holo-scanner classı kullanılarak) */
+/* Eski çubuklar yerine, aşağı yukarı hareket eden tek ve şık bir lazer çizgisi */
+.holo-scanner {
+    position: absolute;
+    width: 160px; 
+    height: 2px;
+    left: 10px; 
+    background: #22d3ee;
+    box-shadow: 0 0 20px 5px rgba(34, 211, 238, 0.5);
+    /* Kasanın tam ortasında dolaşır */
+    transform: translateZ(0px); 
+    animation: laserScan 4s ease-in-out infinite;
+}
+
+/* ========================================================
+   --- KESİNTİSİZ ANİMASYONLAR ---
+   ======================================================== */
+
+/* Kasanın sürekli, ağır ve pürüzsüz dönüşü */
+@keyframes smoothTowerSpin {
+    from { transform: rotateX(-8deg) rotateY(0deg); }
+    to   { transform: rotateX(-8deg) rotateY(360deg); }
+}
+
+/* CPU fanının kararlı dönüşü */
+@keyframes hardwareSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* İçerideki Lazerin aşağı-yukarı inmesi */
+@keyframes laserScan {
+    0%, 100% { top: 20px; opacity: 0.2; }
+    50% { top: 280px; opacity: 1; }
+}
+
+/* Mobil cihazlarda boyutu koruyarak düzenleme */
+@media (max-width: 768px) {
+    .case-holo-stage {
+        transform: scale(0.85);
+        margin-top: 1rem;
+    }
+}
