@@ -1322,163 +1322,149 @@ body.rtl .dropdown-menu {
 }
 
 /* =========================================
-   --- PREMIUM 3D COMPUTER CASE (NO HTML CHANGE) ---
+   --- ABSTRACT TECH CORE / Jiroskop (Kutu Değil) ---
    ========================================= */
 
-/* 1. Sahne (Kameranın Bakış Açısı) */
+/* Sahne Ayarları */
 .case-holo-stage {
     position: relative;
-    width: 250px;
-    height: 380px;
-    perspective: 1200px;
-    margin: 0 auto;
+    width: 300px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
+    perspective: 1000px;
+    margin: 0 auto;
 }
 
-/* 2. Kasanın Ana İskeleti ve Kusursuz Dönüşü */
+/* Tüm Sistemi Taşıyan ve Hafif Eğik Duran Ana Yapı */
 .case-holo-tower {
     position: relative;
-    width: 180px;
-    height: 320px;
+    width: 100%;
+    height: 100%;
     transform-style: preserve-3d;
-    animation: smoothTowerSpin 20s linear infinite; /* Takılmayan ağır kurumsal dönüş */
+    /* Sistemi yatırıp 3D yörünge/jiroskop hissi veriyoruz */
+    transform: rotateX(65deg) rotateY(-15deg);
+    animation: floatCore 4s ease-in-out infinite alternate;
 }
 
-/* 3. Füme Cam Yüzeyler (Parmaklık / Çizgi YOK, Premium Cam Görünümü) */
-.holo-face {
-    position: absolute;
-    /* Koyu mavi/siyah şeffaf cam dolgusu */
-    background: rgba(15, 23, 42, 0.6); 
-    /* Çok ince, lazer kesim hissiyatlı çerçeve */
-    border: 1px solid rgba(56, 189, 248, 0.4); 
-    /* Sadece kenarlarda hafif parlama */
-    box-shadow: inset 0 0 20px rgba(56, 189, 248, 0.15);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-}
-
-/* 3D Geometri - Milimetrik Boyutlandırma */
-.face-front, .face-back { 
-    width: 180px; height: 320px; 
-}
-.face-right, .face-left { 
-    width: 160px; height: 320px; 
-    left: 10px; /* 180 - 160 / 2 */
-}
-.face-top, .face-bottom { 
-    width: 180px; height: 160px; 
-    top: 80px; /* 320 - 160 / 2 */
-}
-
-/* 3D Konumlandırma */
-.face-front  { transform: translateZ(80px); }
-.face-back   { transform: rotateY(180deg) translateZ(80px); }
-.face-right  { transform: rotateY(90deg) translateZ(90px); }
-.face-left   { transform: rotateY(-90deg) translateZ(90px); }
-.face-top    { transform: rotateX(90deg) translateZ(160px); }
-.face-bottom { transform: rotateX(-90deg) translateZ(160px); }
-
-/* ========================================================
-   --- İÇ DONANIM (HTML DEĞİŞTİRMEDEN CSS İLE DOLDURULDU) ---
-   ======================================================== */
-
-/* ANAKART BAZI (Arka camın hemen önüne monte edilmiş pano) */
-.face-back::before {
-    content: '';
-    position: absolute;
-    inset: 15px; /* Camdan 15px içeride */
-    background: rgba(10, 15, 30, 0.9);
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    box-shadow: 0 0 20px rgba(0,0,0,0.8);
-    border-radius: 4px;
-    transform: translateZ(10px); /* Arka camdan azıcık kopartıp derinlik verdik */
-}
-
-/* SUNUCU TİPİ GPU / HIZLANDIRICI KART (Anakartın altından öne uzanır) */
-.face-back::after {
-    content: '';
-    position: absolute;
-    bottom: 30px; 
-    left: 50%;
-    margin-left: -65px; /* 130px genişliğin yarısı */
-    width: 130px; 
-    height: 55px;
-    /* Kapalı ve ağır bir metal blok hissi */
-    background: linear-gradient(90deg, rgba(15,23,42,1), rgba(14, 165, 233, 0.2));
-    border: 1px solid rgba(56, 189, 248, 0.4);
-    border-left: 3px solid #22d3ee; /* Uç kısımdaki parlak mavi gösterge */
-    box-shadow: 10px 10px 20px rgba(0,0,0,0.6);
-    /* Kartı anakarttan bize doğru (Z ekseninde) uzatıyoruz */
-    transform: translateZ(35px); 
-}
-
-/* MERKEZ CPU / SIVI SOĞUTMA ÇEKİRDEĞİ (.holo-core-glow classı kullanılarak) */
+/* 1. MERKEZDEKİ GÜÇ ÇEKİRDEĞİ (CPU) */
 .holo-core-glow {
     position: absolute;
-    top: 25%; left: 50%;
-    margin-left: -35px; /* 70px genişliğin yarısı ortalamak için */
-    width: 70px; height: 70px;
+    top: 50%; left: 50%;
+    width: 80px; height: 80px;
+    margin: -40px 0 0 -40px;
     background: rgba(15, 23, 42, 0.95);
-    border: 2px solid #0ea5e9;
-    border-radius: 50%;
-    box-shadow: 0 0 30px rgba(14, 165, 233, 0.6), inset 0 0 10px #0ea5e9;
-    /* Anakartın üzerinde asılı duruyor */
-    transform: translateZ(-20px); 
-    display: flex; align-items: center; justify-content: center;
+    border: 2px solid #38bdf8;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.6), inset 0 0 15px rgba(56, 189, 248, 0.3);
+    /* Yüzü bize dönük kalsın diye dış eğimi tersine çeviriyoruz */
+    transform: rotateY(15deg) rotateX(-65deg); 
+    display: flex; justify-content: center; align-items: center;
+    z-index: 10;
 }
 
-/* CPU Çekirdeği İçinde Dönen Dijital Halka */
 .holo-core-glow::before {
-    content: '';
-    position: absolute;
-    width: 46px; height: 46px;
-    border-radius: 50%;
-    border: 2px dashed #a5f3fc;
-    animation: hardwareSpin 4s linear infinite;
+    content: 'CPU';
+    color: #e0f2fe;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    letter-spacing: 3px;
+    font-size: 1.1rem;
+    text-shadow: 0 0 10px #38bdf8;
 }
 
-/* İÇERİDEKİ VERİ TARAYICI IŞIK (.holo-scanner classı kullanılarak) */
-/* Eski çubuklar yerine, aşağı yukarı hareket eden tek ve şık bir lazer çizgisi */
+/* 2. ETRAFTA DÖNEN SİBER HALKALAR (Orijinal div'leri yörünge yaptık) */
+.holo-face {
+    position: absolute;
+    top: 50%; left: 50%;
+    border-radius: 50%; /* Kareleri tam yuvarlak yörüngelere çevirdik */
+    transform-style: preserve-3d;
+    box-sizing: border-box;
+}
+
+/* İç Halka (Hızlı ve Parlak) */
+.face-front {
+    width: 140px; height: 140px; margin: -70px 0 0 -70px;
+    border: 2px solid transparent;
+    border-top: 2px solid #38bdf8;
+    border-bottom: 2px solid #38bdf8;
+    animation: spinOrbit 3s linear infinite;
+}
+
+/* İkinci Halka (Kesik Çizgili, Ters Yön) */
+.face-back {
+    width: 180px; height: 180px; margin: -90px 0 0 -90px;
+    border: 2px dashed rgba(165, 243, 252, 0.6);
+    animation: spinOrbitReverse 5s linear infinite;
+}
+
+/* Üçüncü Halka (Pembe/Mor Detaylı Donanım Vurgusu) */
+.face-right {
+    width: 220px; height: 220px; margin: -110px 0 0 -110px;
+    border: 3px solid transparent;
+    border-left: 3px solid rgba(236, 72, 153, 0.7); 
+    border-right: 3px solid rgba(236, 72, 153, 0.7);
+    filter: drop-shadow(0 0 10px rgba(236, 72, 153, 0.5));
+    animation: spinOrbit 7s linear infinite;
+}
+
+/* Dördüncü Halka (Veri Yolu) */
+.face-left {
+    width: 260px; height: 260px; margin: -130px 0 0 -130px;
+    border: 1px dotted rgba(56, 189, 248, 0.5);
+    animation: spinOrbitReverse 10s linear infinite;
+}
+
+/* Dış Çerçeve (Koyu Mavi Kalkan) */
+.face-top {
+    width: 300px; height: 300px; margin: -150px 0 0 -150px;
+    border: 2px solid transparent;
+    border-top: 2px solid rgba(37, 99, 235, 0.5);
+    border-bottom: 2px solid rgba(37, 99, 235, 0.5);
+    box-shadow: inset 0 0 20px rgba(37, 99, 235, 0.2);
+    animation: spinOrbit 15s linear infinite;
+}
+
+/* En Dış İnce Sınır */
+.face-bottom {
+    width: 340px; height: 340px; margin: -170px 0 0 -170px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    animation: spinOrbitReverse 20s linear infinite;
+}
+
+/* 3. MERKEZDEN YAYILAN ENERJİ DALGASI */
 .holo-scanner {
     position: absolute;
-    width: 160px; 
-    height: 2px;
-    left: 10px; 
-    background: #22d3ee;
-    box-shadow: 0 0 20px 5px rgba(34, 211, 238, 0.5);
-    /* Kasanın tam ortasında dolaşır */
-    transform: translateZ(0px); 
-    animation: laserScan 4s ease-in-out infinite;
+    top: 50%; left: 50%;
+    width: 80px; height: 80px; margin: -40px 0 0 -40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.6) 0%, transparent 70%);
+    transform: rotateY(15deg) rotateX(-65deg); /* CPU ile aynı düzlemde düz durur */
+    animation: pulseWave 2s ease-out infinite;
+    z-index: 5;
 }
 
 /* ========================================================
-   --- KESİNTİSİZ ANİMASYONLAR ---
+   --- ANİMASYON KEYFRAMELERİ ---
    ======================================================== */
 
-/* Kasanın sürekli, ağır ve pürüzsüz dönüşü */
-@keyframes smoothTowerSpin {
-    from { transform: rotateX(-8deg) rotateY(0deg); }
-    to   { transform: rotateX(-8deg) rotateY(360deg); }
+@keyframes spinOrbit { 
+    100% { transform: rotateZ(360deg); } 
+}
+@keyframes spinOrbitReverse { 
+    100% { transform: rotateZ(-360deg); } 
+}
+@keyframes pulseWave { 
+    0% { transform: rotateY(15deg) rotateX(-65deg) scale(1); opacity: 0.8; } 
+    100% { transform: rotateY(15deg) rotateX(-65deg) scale(4.5); opacity: 0; } 
+}
+@keyframes floatCore { 
+    0% { transform: rotateX(65deg) rotateY(-15deg) translateZ(10px); } 
+    100% { transform: rotateX(65deg) rotateY(-15deg) translateZ(-10px); } 
 }
 
-/* CPU fanının kararlı dönüşü */
-@keyframes hardwareSpin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-}
-
-/* İçerideki Lazerin aşağı-yukarı inmesi */
-@keyframes laserScan {
-    0%, 100% { top: 20px; opacity: 0.2; }
-    50% { top: 280px; opacity: 1; }
-}
-
-/* Mobil cihazlarda boyutu koruyarak düzenleme */
+/* Mobil cihazlar için boyutu toparlama */
 @media (max-width: 768px) {
-    .case-holo-stage {
-        transform: scale(0.85);
-        margin-top: 1rem;
-    }
+    .case-holo-stage { transform: scale(0.65); margin-top: 2rem; }
 }
