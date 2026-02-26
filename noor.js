@@ -351,3 +351,31 @@ function switchCasePage(pageNum) {
     const sectionTop = document.getElementById('comp_case').querySelector('.bg-\\[\\#f8f9fc\\]').offsetTop;
     window.scrollTo({ top: sectionTop - 100, behavior: 'smooth' });
 }
+
+// ÜRÜN FİLTRELEME FONKSİYONU
+function filterProducts(inputId, cardClass) {
+    const input = document.getElementById(inputId).value.toLowerCase();
+    const cards = document.querySelectorAll(cardClass);
+    
+    cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(input) ? "block" : "none";
+    });
+}
+
+// SCROLL OBSERVER (KAYDIRMA İZLEYİCİ)
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Tüm ana bölümleri ve kartları otomatik izlemeye al
+    document.querySelectorAll('section, .feature-card-pro, .team-card, .sub-product-card').forEach((el) => {
+        el.classList.add('reveal-on-scroll');
+        observer.observe(el);
+    });
+});
