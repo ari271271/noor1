@@ -13,7 +13,7 @@ const translations = {
         comp_card_1: "New Laptop",
         comp_card_2: "Second Hand Computer",
         comp_card_3: "Cooler Pad",
-        comp_card_4: "Computer Case", // YENİ EKLENDİ
+        comp_card_4: "Computer Case", 
         back_to_comp: "Back to Computer",
         back_to_brands: "Back to Brands",
         
@@ -60,7 +60,7 @@ const translations = {
         comp_card_1: "Sıfır Laptop",
         comp_card_2: "İkinci El Bilgisayar",
         comp_card_3: "Soğutucu Pad",
-        comp_card_4: "Bilgisayar Kasası", // YENİ EKLENDİ
+        comp_card_4: "Bilgisayar Kasası", 
         back_to_comp: "Bilgisayarlara Dön",
         back_to_brands: "Markalara Dön",
         
@@ -107,7 +107,7 @@ const translations = {
         comp_card_1: "لابتوب جديد",
         comp_card_2: "كمبيوتر مستعمل",
         comp_card_3: "حامل تبريد",
-        comp_card_4: "صندوق الكمبيوتر", // YENİ EKLENDİ
+        comp_card_4: "صندوق الكمبيوتر", 
         back_to_comp: "العودة إلى الكمبيوتر",
         back_to_brands: "العودة إلى الماركات",
         
@@ -154,7 +154,7 @@ const translations = {
         comp_card_1: "لاپتۆپی نوێ",
         comp_card_2: "کۆمپیوتەری بەکارهاتوو",
         comp_card_3: "پادی ساردکەرەوە",
-        comp_card_4: "کەیسی کۆمپیوتەر", // YENİ EKLENDİ
+        comp_card_4: "کەیسی کۆمپیوتەر", 
         back_to_comp: "گەڕانەوە بۆ کۆمپیوتەر",
         back_to_brands: "گەڕانەوە بۆ مارکەکان",
         
@@ -189,7 +189,6 @@ const translations = {
     }
 };
 
-// Tarayıcı geçmişine kaydetme parametresi eklendi
 function showPage(pageId, pushToHistory = true) {
     const pages = document.querySelectorAll('.page-section');
     pages.forEach(page => page.classList.remove('active'));
@@ -204,16 +203,14 @@ function showPage(pageId, pushToHistory = true) {
     sessionStorage.setItem('currentPage', pageId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Eğer fonksiyon history için çağrılmadıysa URL'ye kayıt ekle
     if (pushToHistory) {
         history.pushState({ page: pageId }, "", "#" + pageId);
     }
 }
 
-// Tarayıcı geri/ileri butonlarını dinleyen olay
 window.addEventListener('popstate', (event) => {
     if (event.state && event.state.page) {
-        showPage(event.state.page, false); // History'ye tekrar yazmaması için false gönderiyoruz
+        showPage(event.state.page, false);
     } else {
         const hash = window.location.hash.substring(1) || 'home';
         showPage(hash, false);
@@ -293,17 +290,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLanguage') || 'en';
     setLanguage(savedLang);
     
-    // Sayfa ilk yüklendiğinde URL'deki hash (#) kısmını kontrol et, yoksa session'a bak
     let startPage = window.location.hash.substring(1);
     if (!startPage || !document.getElementById(startPage)) {
         startPage = sessionStorage.getItem('currentPage') || 'home';
     }
     
-    // Başlangıç sayfasını history'ye (geçmişe) ilk kayıt olarak ekle
     history.replaceState({ page: startPage }, "", "#" + startPage);
     showPage(startPage, false);
     
     document.body.style.visibility = 'visible';
+
+    /* =========================================
+       --- LAZY LOADING ENTEGRASYONU ---
+       ========================================= */
+    const imagesToLazyLoad = document.querySelectorAll('main img');
+    imagesToLazyLoad.forEach(img => {
+        if(!img.hasAttribute('loading')){
+            img.setAttribute('loading', 'lazy');
+        }
+    });
+    console.log(`Lazy Loading Aktif: Toplam ${imagesToLazyLoad.length} görsel.`);
 });
 
 window.onclick = function(event) {
@@ -313,41 +319,32 @@ window.onclick = function(event) {
     }
 }
 
-// ----------------------------------------------------
-// BİLGİSAYAR KASASI SAYFA GEÇİŞ FONKSİYONU
-// ----------------------------------------------------
 function switchCasePage(pageNum) {
     const page1 = document.getElementById('case-page-1');
     const page2 = document.getElementById('case-page-2');
     const btn1 = document.getElementById('btn-page-1');
     const btn2 = document.getElementById('btn-page-2');
 
-    // Güvenlik kontrolü (Eğer elementler yoksa hata vermemesi için)
     if (!page1 || !page2 || !btn1 || !btn2) return;
 
     if (pageNum === 1) {
-        // Sayfa 1'i göster, Sayfa 2'yi gizle
         page1.classList.remove('hidden');
         page1.classList.add('flex');
         page2.classList.add('hidden');
         page2.classList.remove('flex');
         
-        // Buton 1'i Mavi (Aktif), Buton 2'yi Beyaz yap
         btn1.className = "w-12 h-12 rounded-xl font-bold transition-all bg-blue-600 text-white shadow-lg transform hover:scale-105";
         btn2.className = "w-12 h-12 rounded-xl font-bold transition-all bg-white border border-gray-200 text-gray-600 hover:bg-blue-50 hover:text-blue-600 shadow-sm transform hover:scale-105";
     } else {
-        // Sayfa 2'yi göster, Sayfa 1'i gizle
         page2.classList.remove('hidden');
         page2.classList.add('flex');
         page1.classList.add('hidden');
         page1.classList.remove('flex');
         
-        // Buton 2'yi Mavi (Aktif), Buton 1'i Beyaz yap
         btn2.className = "w-12 h-12 rounded-xl font-bold transition-all bg-blue-600 text-white shadow-lg transform hover:scale-105";
         btn1.className = "w-12 h-12 rounded-xl font-bold transition-all bg-white border border-gray-200 text-gray-600 hover:bg-blue-50 hover:text-blue-600 shadow-sm transform hover:scale-105";
     }
 
-    // Tıklandığında ekranı ürünlerin en üstüne kaydır
     const sectionTop = document.getElementById('comp_case').querySelector('.bg-\\[\\#f8f9fc\\]').offsetTop;
     window.scrollTo({ top: sectionTop - 100, behavior: 'smooth' });
 }
@@ -362,7 +359,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Tüm ana bölümleri ve kartları otomatik izlemeye al
     document.querySelectorAll('section, .feature-card-pro, .team-card, .sub-product-card').forEach((el) => {
         el.classList.add('reveal-on-scroll');
         observer.observe(el);
