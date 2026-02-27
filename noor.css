@@ -1480,3 +1480,33 @@ body.rtl .dropdown-menu {
     opacity: 1 !important;
     transform: translateY(0) !important;
 }
+
+/* =========================================
+   --- TYPEWRITER (DAKTİLO) İMLEÇ EFEKTİ - PREMIUM NEON ---
+   ========================================= */
+.typewriter-cursor {
+    display: inline-block;
+    width: 3px; /* Biraz daha ince ve zarif */
+    height: 1.2em;
+    background-color: #3b82f6; /* Ana marka rengi */
+    margin-left: 6px;
+    vertical-align: text-bottom;
+    border-radius: 4px; /* Köşeleri yumuşattık */
+    /* İşte sihir burada: Neon parlama efekti ekliyoruz */
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.8), 0 0 15px rgba(59, 130, 246, 0.4);
+    /* Animasyonu daha akıcı hale getirdik */
+    animation: smoothBlink 1.2s ease-in-out infinite;
+}
+
+@keyframes smoothBlink {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scaleY(1); /* Tam boyutta */
+        filter: brightness(1.2); /* Parlaklık artar */
+    }
+    50% { 
+        opacity: 0.4; /* Tamamen kaybolmaz, silikleşir */
+        transform: scaleY(0.9); /* Hafifçe kısalır */
+        filter: brightness(0.8); /* Parlaklık azalır */
+    }
+}
