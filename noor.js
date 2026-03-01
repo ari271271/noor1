@@ -124,13 +124,13 @@ const productsData = {
     lenovo: [
         {
             title: "<span>Lenovo Ideapad</span> Slim 3",
-            img: "./photo/placeholder.png", 
+            img: "./photo/placeholder.webp", 
             features: ["Intel Core i5 - 12th Gen", "RAM 8GB DDR4", "HARD 512GB SSD", "15.6\" inch FHD"],
             whatsapp: "https://wa.me/9647504533130"
         },
         {
             title: "<span>Lenovo ThinkPad</span> T14",
-            img: "./photo/placeholder.png",
+            img: "./photo/placeholder.webp",
             features: ["Intel Core i7 - 11th Gen", "RAM 16GB DDR4", "HARD 1TB SSD", "14\" inch FHD"],
             whatsapp: "https://wa.me/9647504533130"
         }
@@ -214,7 +214,6 @@ function setLanguage(lang) {
     if(currentLangLabel) currentLangLabel.textContent = lang.toUpperCase();
     if(dropdown) dropdown.classList.remove('show'); 
     
-    // Dil değiştiğinde başlığı da güncelliyoruz
     const currentPage = sessionStorage.getItem('currentPage') || 'home';
     const pageName = translations[lang]['nav_' + currentPage.split('_')[0]] || "IT & Fiber Solutions";
     document.title = `NOOR NETWORK | ${pageName}`;
@@ -291,7 +290,7 @@ function renderProducts(containerId, productsArray) {
 
 
 /* =========================================
-   5. UI & ETKİLEŞİMLER
+   5. UI & ETKİLEŞİMLER (FormSubmit Entegreli)
    ========================================= */
 function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
@@ -305,8 +304,32 @@ function toggleLangDropdown() {
 
 function sendEmail(event) {
     event.preventDefault(); 
-    alert("Mesajınız başarıyla gönderildi / Message sent successfully!"); 
-    document.getElementById('contactForm').reset(); 
+
+    const name = document.getElementById('contactName').value;
+    const email = document.getElementById('contactEmail').value;
+    const message = document.getElementById('contactMessage').value;
+
+    fetch("https://formsubmit.co/ajax/noor.network2001@gmail.com", {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            Ad_Soyad: name,
+            Email: email,
+            Mesaj: message
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert("Mesajınız başarıyla gönderildi / Message sent successfully!"); 
+        document.getElementById('contactForm').reset();
+    })
+    .catch(error => {
+        console.log(error);
+        alert("Bir hata oluştu, lütfen daha sonra tekrar deneyin.");
+    });
 }
 
 window.onclick = function(event) {
