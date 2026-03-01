@@ -387,12 +387,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLanguage') || 'en';
     setLanguage(savedLang);
 
-    let startPage = window.location.hash.substring(1);
-    if (!startPage || !document.getElementById(startPage)) {
-        startPage = sessionStorage.getItem('currentPage') || 'home';
-    }
+    // YENİ EKLENEN KISIM: Sayfaya her girildiğinde hafızayı sıfırla ve 'home' ile başla
+    sessionStorage.removeItem('currentPage');
+    window.location.hash = ''; // URL'deki # kısmını temizler
+    let startPage = 'home';
     history.replaceState({ page: startPage }, "", "#" + startPage);
     showPage(startPage, false);
+    
     document.body.style.visibility = 'visible';
 
     const observer = new IntersectionObserver((entries) => {
