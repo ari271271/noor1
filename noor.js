@@ -309,7 +309,8 @@ function sendEmail(event) {
     const email = document.getElementById('contactEmail').value;
     const message = document.getElementById('contactMessage').value;
 
-    fetch("https://formsubmit.co/ajax/noor.network2001@gmail.com", {
+    // Mail adresi ariadnanmanaf@gmail.com olarak güncellendi
+    fetch("https://formsubmit.co/ajax/ariadnanmanaf@gmail.com", {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
@@ -331,7 +332,6 @@ function sendEmail(event) {
         alert("Bir hata oluştu, lütfen daha sonra tekrar deneyin.");
     });
 }
-
 window.onclick = function(event) {
     if (!event.target.closest('.relative')) {
         const dropdown = document.getElementById('lang-dropdown');
