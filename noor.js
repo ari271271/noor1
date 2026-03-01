@@ -154,16 +154,14 @@ function showPage(pageId, pushToHistory = true) {
     }
 
     targetPage.classList.add('active');
-    sessionStorage.setItem('currentPage', pageId);
     
-    // EKRANI KESİNLİKLE EN TEPEYE SABİTLER (MENÜNÜN GİZLENMESİNİ ENGELLER)
+    // Herhangi bir sayfaya tıklandığında ekranı en üste alır (DÜZELTME)
     window.scrollTo(0, 0);
 
     if (pushToHistory) {
         history.pushState({ page: pageId }, "", "#" + pageId);
     }
 
-    /* --- DİNAMİK SEO (SAYFA BAŞLIĞI) --- */
     const currentLang = localStorage.getItem('preferredLanguage') || 'en';
     const pageName = translations[currentLang]['nav_' + pageId.split('_')[0]] || "IT & Fiber Solutions";
     document.title = `NOOR NETWORK | ${pageName}`;
@@ -176,6 +174,7 @@ window.addEventListener('popstate', (event) => {
         showPage('home', false);
     }
 });
+
 
 /* =========================================
    3. LANGUAGE & THEME YÖNETİMİ
@@ -215,8 +214,8 @@ function setLanguage(lang) {
     if(currentLangLabel) currentLangLabel.textContent = lang.toUpperCase();
     if(dropdown) dropdown.classList.remove('show'); 
     
-    const currentPage = sessionStorage.getItem('currentPage') || 'home';
-    const pageName = translations[lang]['nav_' + currentPage.split('_')[0]] || "IT & Fiber Solutions";
+    const hash = window.location.hash.substring(1) || 'home';
+    const pageName = translations[lang]['nav_' + hash.split('_')[0]] || "IT & Fiber Solutions";
     document.title = `NOOR NETWORK | ${pageName}`;
 }
 
@@ -252,7 +251,7 @@ function updateThemeIcon(isDark) {
     if (!icon) return;
     
     if (isDark) {
-        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />';
+        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />';
     } else {
         icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />';
     }
@@ -310,8 +309,7 @@ function sendEmail(event) {
     const email = document.getElementById('contactEmail').value;
     const message = document.getElementById('contactMessage').value;
 
-    // Mail adresi ariadnanmanaf@gmail.com olarak güncellendi
-    fetch("https://formsubmit.co/ajax/ariadnanmanaf@gmail.com@gmail.com", {
+    fetch("https://formsubmit.co/ajax/ariadnanmanaf@gmail.com", {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
@@ -333,6 +331,7 @@ function sendEmail(event) {
         alert("Bir hata oluştu, lütfen daha sonra tekrar deneyin.");
     });
 }
+
 window.onclick = function(event) {
     if (!event.target.closest('.relative')) {
         const dropdown = document.getElementById('lang-dropdown');
@@ -370,6 +369,7 @@ function switchCasePage(pageNum) {
     window.scrollTo({ top: sectionTop - 100, behavior: 'smooth' });
 }
 
+
 /* =========================================
    6. BÜTÜN SİSTEMİ BAŞLATAN ANA FONKSİYON (INIT)
    ========================================= */
@@ -396,11 +396,17 @@ function startTypewriter() {
 
 document.addEventListener('DOMContentLoaded', () => {
     
+    // 1. TARAYICIYI ZORLA EN ÜSTE AL
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
-    
     window.scrollTo(0, 0);
+    
+    // 2. HAFIZAYI SİL VE ANA SAYFADAN BAŞLAT
+    sessionStorage.removeItem('currentPage');
+    window.location.hash = '';
+    history.replaceState({ page: 'home' }, "", "#home");
+    showPage('home', false);
 
     if (localStorage.getItem('darkMode') === 'enabled') {
         document.body.classList.add('dark-theme');
@@ -412,12 +418,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLanguage') || 'en';
     setLanguage(savedLang);
 
-    sessionStorage.removeItem('currentPage');
-    window.location.hash = ''; 
-    let startPage = 'home';
-    history.replaceState({ page: startPage }, "", "#" + startPage);
-    showPage(startPage, false);
-    
     document.body.style.visibility = 'visible';
 
     startTypewriter();
@@ -430,25 +430,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
+    // 3. ANA SAYFA EKRANINDAKİ YAZILARIN HEMEN GÖRÜNMESİ İÇİN DÜZELTME
     document.querySelectorAll('section, .feature-card-pro, .team-card, .sub-product-card').forEach((el) => {
-        el.classList.add('reveal-on-scroll');
-        observer.observe(el);
-    });
-
-    // --- SORUNU KESİN OLARAK ÇÖZEN KISIM ---
-    // Ana sayfadaki (Home) elementleri scroll beklemeden hemen görünür yapar
-    setTimeout(() => {
-        const homeSection = document.getElementById('home');
-        if (homeSection) {
-            const elementsToShow = homeSection.querySelectorAll('.reveal-on-scroll');
-            elementsToShow.forEach(el => {
-                el.classList.add('visible');
-                // Eğer CSS animasyonu takılırsa diye opacity'i doğrudan veriyoruz
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
-            });
+        // Eğer eleman ana sayfadaysa beklemeden göster
+        if (el.closest('#home')) {
+            el.classList.add('visible'); 
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        } else {
+            // Diğer sayfalar için normal kaydırma (scroll) animasyonu
+            el.classList.add('reveal-on-scroll');
+            observer.observe(el);
         }
-    }, 50); // 50 milisaniye sonra (neredeyse anında) tetiklenir
+    });
 
     const imagesToLazyLoad = document.querySelectorAll('main img');
     imagesToLazyLoad.forEach(img => {
