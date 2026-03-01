@@ -155,7 +155,9 @@ function showPage(pageId, pushToHistory = true) {
 
     targetPage.classList.add('active');
     sessionStorage.setItem('currentPage', pageId);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // EKRANI KESİNLİKLE EN TEPEYE SABİTLER (MENÜNÜN GİZLENMESİNİ ENGELLER)
+    window.scrollTo(0, 0);
 
     if (pushToHistory) {
         history.pushState({ page: pageId }, "", "#" + pageId);
@@ -171,8 +173,7 @@ window.addEventListener('popstate', (event) => {
     if (event.state && event.state.page) {
         showPage(event.state.page, false);
     } else {
-        const hash = window.location.hash.substring(1) || 'home';
-        showPage(hash, false);
+        showPage('home', false);
     }
 });
 
@@ -369,18 +370,15 @@ function switchCasePage(pageNum) {
     window.scrollTo({ top: sectionTop - 100, behavior: 'smooth' });
 }
 
-
 /* =========================================
    6. BÜTÜN SİSTEMİ BAŞLATAN ANA FONKSİYON (INIT)
    ========================================= */
 
-// EKSİK OLAN DAKTİLO (TYPEWRITER) EFEKTİ FONKSİYONU EKLENDİ
 function startTypewriter() {
     const typeText = document.getElementById('typewriter-text');
     if (!typeText) return;
     
     const currentLang = localStorage.getItem('preferredLanguage') || 'en';
-    // Hangi dildeyse o dilin kelimesini alıyor
     const word = translations[currentLang]['hero_title_2'] || "Unlimited.";
     
     typeText.textContent = '';
@@ -390,14 +388,20 @@ function startTypewriter() {
         if (i < word.length) {
             typeText.textContent += word.charAt(i);
             i++;
-            setTimeout(type, 120); // Yazma hızı
+            setTimeout(type, 120); 
         }
     }
-    setTimeout(type, 800); // Sayfa açıldıktan yarım saniye sonra yazmaya başlasın
+    setTimeout(type, 800); 
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    
+    window.scrollTo(0, 0);
+
     if (localStorage.getItem('darkMode') === 'enabled') {
         document.body.classList.add('dark-theme');
         updateThemeIcon(true);
@@ -408,7 +412,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLanguage') || 'en';
     setLanguage(savedLang);
 
-    // SAYFAYI HER ZAMAN "HOME" İLE SIFIRDAN BAŞLAT
     sessionStorage.removeItem('currentPage');
     window.location.hash = ''; 
     let startPage = 'home';
@@ -417,10 +420,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     document.body.style.visibility = 'visible';
 
-    // DAKTİLO EFEKTİNİ ÇALIŞTIR
     startTypewriter();
 
-    // SCROLL ANİMASYONLARI
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -434,13 +435,20 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // İLK AÇILIŞTAKİ GÖRÜNMEZLİK SORUNUNU ÇÖZEN KOD
-    // Ekranda halihazırda görünen kısımları beklemeden hemen görünür (visible) yapar
+    // --- SORUNU KESİN OLARAK ÇÖZEN KISIM ---
+    // Ana sayfadaki (Home) elementleri scroll beklemeden hemen görünür yapar
     setTimeout(() => {
-        document.querySelectorAll('.active .reveal-on-scroll').forEach(el => {
-            el.classList.add('visible');
-        });
-    }, 100);
+        const homeSection = document.getElementById('home');
+        if (homeSection) {
+            const elementsToShow = homeSection.querySelectorAll('.reveal-on-scroll');
+            elementsToShow.forEach(el => {
+                el.classList.add('visible');
+                // Eğer CSS animasyonu takılırsa diye opacity'i doğrudan veriyoruz
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        }
+    }, 50); // 50 milisaniye sonra (neredeyse anında) tetiklenir
 
     const imagesToLazyLoad = document.querySelectorAll('main img');
     imagesToLazyLoad.forEach(img => {
