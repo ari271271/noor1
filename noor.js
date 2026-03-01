@@ -373,6 +373,29 @@ function switchCasePage(pageNum) {
 /* =========================================
    6. BÜTÜN SİSTEMİ BAŞLATAN ANA FONKSİYON (INIT)
    ========================================= */
+
+// EKSİK OLAN DAKTİLO (TYPEWRITER) EFEKTİ FONKSİYONU EKLENDİ
+function startTypewriter() {
+    const typeText = document.getElementById('typewriter-text');
+    if (!typeText) return;
+    
+    const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+    // Hangi dildeyse o dilin kelimesini alıyor
+    const word = translations[currentLang]['hero_title_2'] || "Unlimited.";
+    
+    typeText.textContent = '';
+    let i = 0;
+    
+    function type() {
+        if (i < word.length) {
+            typeText.textContent += word.charAt(i);
+            i++;
+            setTimeout(type, 120); // Yazma hızı
+        }
+    }
+    setTimeout(type, 800); // Sayfa açıldıktan yarım saniye sonra yazmaya başlasın
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     
     if (localStorage.getItem('darkMode') === 'enabled') {
@@ -382,20 +405,22 @@ document.addEventListener('DOMContentLoaded', () => {
         updateThemeIcon(false);
     }
 
-    // renderProducts('lenovo-container', productsData.lenovo); 
-
     const savedLang = localStorage.getItem('preferredLanguage') || 'en';
     setLanguage(savedLang);
 
-    // YENİ EKLENEN KISIM: Sayfaya her girildiğinde hafızayı sıfırla ve 'home' ile başla
+    // SAYFAYI HER ZAMAN "HOME" İLE SIFIRDAN BAŞLAT
     sessionStorage.removeItem('currentPage');
-    window.location.hash = ''; // URL'deki # kısmını temizler
+    window.location.hash = ''; 
     let startPage = 'home';
     history.replaceState({ page: startPage }, "", "#" + startPage);
     showPage(startPage, false);
     
     document.body.style.visibility = 'visible';
 
+    // DAKTİLO EFEKTİNİ ÇALIŞTIR
+    startTypewriter();
+
+    // SCROLL ANİMASYONLARI
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -408,6 +433,14 @@ document.addEventListener('DOMContentLoaded', () => {
         el.classList.add('reveal-on-scroll');
         observer.observe(el);
     });
+
+    // İLK AÇILIŞTAKİ GÖRÜNMEZLİK SORUNUNU ÇÖZEN KOD
+    // Ekranda halihazırda görünen kısımları beklemeden hemen görünür (visible) yapar
+    setTimeout(() => {
+        document.querySelectorAll('.active .reveal-on-scroll').forEach(el => {
+            el.classList.add('visible');
+        });
+    }, 100);
 
     const imagesToLazyLoad = document.querySelectorAll('main img');
     imagesToLazyLoad.forEach(img => {
