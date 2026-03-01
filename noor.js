@@ -310,7 +310,7 @@ function sendEmail(event) {
     const message = document.getElementById('contactMessage').value;
 
     // Mail adresi ariadnanmanaf@gmail.com olarak güncellendi
-    fetch("https://formsubmit.co/ajax/ariadnanmanaf@gmail.com", {
+    fetch("https://formsubmit.co/ajax/noor.network2001@gmail.com@gmail.com", {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
