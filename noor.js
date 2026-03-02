@@ -419,7 +419,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLanguage') || 'en';
     setLanguage(savedLang);
 
-    document.body.style.visibility = 'visible';
+    // Tüm yönlendirmeler ve yerleşimler bittikten sonra ekranı yumuşakça aydınlat
+    requestAnimationFrame(() => {
+        document.body.style.opacity = '1';
+    });
 
     startTypewriter();
 
@@ -431,15 +434,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
-    // 3. ANA SAYFA EKRANINDAKİ YAZILARIN HEMEN GÖRÜNMESİ İÇİN DÜZELTME
+    // 3. AKTİF SAYFADAKİ ELEMANLARIN HEMEN GÖRÜNMESİ İÇİN DÜZELTME
     document.querySelectorAll('section, .feature-card-pro, .team-card, .sub-product-card').forEach((el) => {
-        // Eğer eleman ana sayfadaysa beklemeden göster
-        if (el.closest('#home')) {
+        // Eğer eleman o an yüklenen sayfadaysa (currentHash) beklemeden göster
+        if (el.closest('#' + currentHash)) {
             el.classList.add('visible'); 
             el.style.opacity = '1';
             el.style.transform = 'translateY(0)';
         } else {
-            // Diğer sayfalar için normal kaydırma (scroll) animasyonu
+            // Aşağılarda kalan veya diğer sayfalardaki elemanlar için scroll animasyonu
             el.classList.add('reveal-on-scroll');
             observer.observe(el);
         }
