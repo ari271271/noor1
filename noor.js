@@ -7,6 +7,8 @@
    5. UI & INTERACTION (Menü, Form, Efektler)
    ========================================================================== */
 
+let typeTimeout; // Daktilo animasyonunu sıfırlamak için eklendi
+
 /* =========================================
    1. DATA: ÇEVİRİLER
    ========================================= */
@@ -216,6 +218,9 @@ function setLanguage(lang) {
     const hash = window.location.hash.substring(1) || 'home';
     const pageName = translations[lang]['nav_' + hash.split('_')[0]] || "IT & Fiber Solutions";
     document.title = `NOOR NETWORK | ${pageName}`;
+
+    // Dil değiştiğinde daktilo efektini yeniden başlat
+    startTypewriter();
 }
 
 function updateFormValidation(lang) {
@@ -278,7 +283,7 @@ function renderProducts(containerId, productsArray) {
                     <ul>
                         ${product.features.map(feature => `<li>${feature}</li>`).join('')}
                     </ul>
-                    <a href="${product.whatsapp}" target="_blank" onclick="event.stopPropagation()" class="w-full py-2.5 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2">
+                    <a href="${product.whatsapp}" target="_blank" onclick="event.stopPropagation()" class="w-full py.5 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2">
                         ${whatsappSVG} <span data-i18n="btn_whatsapp">WhatsApp</span>
                     </a>
                 </div>
@@ -383,14 +388,18 @@ function startTypewriter() {
     typeText.textContent = '';
     let i = 0;
     
+    // Önceki yazma animasyonunu sıfırla
+    clearTimeout(typeTimeout);
+    
     function type() {
         if (i < word.length) {
             typeText.textContent += word.charAt(i);
             i++;
-            setTimeout(type, 120); 
+            typeTimeout = setTimeout(type, 120); 
         }
     }
-    setTimeout(type, 800); 
+    // Animasyonu başlat
+    typeTimeout = setTimeout(type, 800); 
 }
 
 document.addEventListener('DOMContentLoaded', () => {
