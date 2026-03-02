@@ -155,7 +155,6 @@ function showPage(pageId, pushToHistory = true) {
 
     targetPage.classList.add('active');
     
-    // Herhangi bir sayfaya tıklandığında ekranı en üste alır (DÜZELTME)
     window.scrollTo(0, 0);
 
     if (pushToHistory) {
@@ -402,11 +401,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.scrollTo(0, 0);
     
-    // 2. HAFIZAYI SİL VE ANA SAYFADAN BAŞLAT
-    sessionStorage.removeItem('currentPage');
-    window.location.hash = '';
-    history.replaceState({ page: 'home' }, "", "#home");
-    showPage('home', false);
+    // 2. URL'DEKİ HASH KISMINI OKU VE KALDIĞI YERDEN DEVAM ET (DÜZELTİLEN KISIM)
+    let currentHash = window.location.hash.substring(1);
+    if (!currentHash || !document.getElementById(currentHash)) {
+        currentHash = 'home';
+    }
+    history.replaceState({ page: currentHash }, "", "#" + currentHash);
+    showPage(currentHash, false);
 
     if (localStorage.getItem('darkMode') === 'enabled') {
         document.body.classList.add('dark-theme');
@@ -451,4 +452,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
