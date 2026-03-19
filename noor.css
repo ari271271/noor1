@@ -1,4 +1,4 @@
-    :root {
+:root {
         --font-en: 'Inter', sans-serif;
         --font-ar: 'Noto Sans Arabic', sans-serif; 
         --brand-blue: #2563eb;
@@ -11,7 +11,7 @@
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-    opacity: 0; 
+        opacity: 0; 
         transition: opacity 0.3s ease-in-out;
     }
 
@@ -34,7 +34,7 @@
         font-family: var(--font-ar) !important;
     }
 
-/* =========================================
+    /* =========================================
     --- SAYFA GEÇİŞ ANİMASYONLARI (OPTİMİZE EDİLDİ) ---
     ========================================= */
     .page-section {
@@ -59,6 +59,37 @@
             transform: translateY(0); 
         }
     }
+
+    /* =========================================
+    --- BİLGİSAYAR ALT BAŞLIK STANDARTLAŞTIRMASI ---
+    ========================================= */
+    p[data-i18n="computer_desc"],
+    #comp_second_hand p,
+    .apple-subtext {
+        position: relative !important;
+        z-index: 10 !important;
+        color: #d1d5db !important;
+        font-weight: 500 !important;
+        letter-spacing: 3px !important;
+        text-transform: uppercase !important;
+        font-size: 1rem !important;
+        text-align: center !important;
+        max-width: 36rem !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        line-height: 1.6 !important;
+    }
+
+    @media (min-width: 768px) {
+        p[data-i18n="computer_desc"],
+        #comp_second_hand p,
+        .apple-subtext {
+            font-size: 1.125rem !important; 
+        }
+    }
+
     /* =========================================
     --- BUTON STİLLERİ ---
     ========================================= */
@@ -520,16 +551,6 @@
         text-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
     }
 
-    #comp_second_hand p {
-        position: relative;
-        z-index: 10;
-        color: rgba(0, 255, 0, 0.6);
-        font-weight: 400;
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-        font-size: 0.9rem;
-    }
-
     .digital-grid {
         position: absolute;
         width: 350px; height: 350px;
@@ -607,7 +628,6 @@
     }
 
     #comp_new_laptop section:first-of-type h2,
-    #comp_new_laptop section:first-of-type p,
     #comp_new_laptop section:first-of-type button {
         position: relative;
         z-index: 10;
@@ -1175,7 +1195,9 @@
         transition: all 0.5s ease; 
     }
 
-    /* --- Apple Ultra Stage --- */
+    /* =========================================
+    --- APPLE ULTRA STAGE ---
+    ========================================= */
     .apple-ultra-stage {
         background: #000000;
         min-height: 500px;
@@ -1195,15 +1217,13 @@
         z-index: 1;
     }
 
-    /* --- Glass Card Tasarımı --- */
     .apple-luxury-wrapper {
         position: relative;
         z-index: 10;
         perspective: 1000px;
-        /* EKLENENLER: */
         display: flex;
         flex-direction: column;
-        align-items: center; /* İçindeki kartı ve yazıyı yatayda ortalar */
+        align-items: center; 
     }
 
     .apple-pro-card {
@@ -1223,7 +1243,6 @@
         overflow: hidden;
     }
 
-    /* Kartın içindeki holografik parlama */
     .card-shimmer-sweep {
         position: absolute;
         inset: -100%;
@@ -1245,7 +1264,6 @@
         z-index: 2;
     }
 
-    /* --- Başlık ve Yazılar --- */
     .apple-branding {
         text-align: center;
         margin-top: 40px;
@@ -1277,17 +1295,6 @@
         opacity: 0.5;
     }
 
-    .apple-subtext {
-        position: relative;
-        z-index: 10;
-        color: #666;
-        font-size: 0.9rem;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        margin-top: 20px;
-    }
-
-    /* --- Premium Buton --- */
     .apple-btn-premium {
         margin-top: 30px;
         padding: 12px 35px;
@@ -1312,7 +1319,6 @@
         transform: translateY(-3px);
     }
 
-    /* --- Animasyonlar --- */
     @keyframes appleFloat {
         0%, 100% { transform: translateY(0) rotateX(0deg); }
         50% { transform: translateY(-20px) rotateX(5deg); }
@@ -1323,17 +1329,14 @@
         100% { transform: translate(50%, 50%) rotate(0deg); }
     }
 
-    /* Mobilde uyum sağlaması için */
     @media (max-width: 768px) {
         .apple-title-new { font-size: 2rem; letter-spacing: 4px; }
         .apple-pro-card { width: 140px; height: 140px; }
     }
 
     /* =========================================
-    --- ABSTRACT TECH CORE / Jiroskop (Kutu Değil) ---
+    --- ABSTRACT TECH CORE / JİROSKOP (Kasa) ---
     ========================================= */
-
-    /* Sahne Ayarları */
     .case-holo-stage {
         position: relative;
         width: 300px;
@@ -1345,18 +1348,15 @@
         margin: 0 auto;
     }
 
-    /* Tüm Sistemi Taşıyan ve Hafif Eğik Duran Ana Yapı */
     .case-holo-tower {
         position: relative;
         width: 100%;
         height: 100%;
         transform-style: preserve-3d;
-        /* Sistemi yatırıp 3D yörünge/jiroskop hissi veriyoruz */
         transform: rotateX(65deg) rotateY(-15deg);
         animation: floatCore 4s ease-in-out infinite alternate;
     }
 
-    /* 1. MERKEZDEKİ GÜÇ ÇEKİRDEĞİ (CPU) */
     .holo-core-glow {
         position: absolute;
         top: 50%; left: 50%;
@@ -1366,7 +1366,6 @@
         border: 2px solid #38bdf8;
         border-radius: 12px;
         box-shadow: 0 0 30px rgba(56, 189, 248, 0.6), inset 0 0 15px rgba(56, 189, 248, 0.3);
-        /* Yüzü bize dönük kalsın diye dış eğimi tersine çeviriyoruz */
         transform: rotateY(15deg) rotateX(-65deg); 
         display: flex; justify-content: center; align-items: center;
         z-index: 10;
@@ -1382,16 +1381,14 @@
         text-shadow: 0 0 10px #38bdf8;
     }
 
-    /* 2. ETRAFTA DÖNEN SİBER HALKALAR (Orijinal div'leri yörünge yaptık) */
     .holo-face {
         position: absolute;
         top: 50%; left: 50%;
-        border-radius: 50%; /* Kareleri tam yuvarlak yörüngelere çevirdik */
+        border-radius: 50%; 
         transform-style: preserve-3d;
         box-sizing: border-box;
     }
 
-    /* İç Halka (Hızlı ve Parlak) */
     .face-front {
         width: 140px; height: 140px; margin: -70px 0 0 -70px;
         border: 2px solid transparent;
@@ -1400,14 +1397,12 @@
         animation: spinOrbit 3s linear infinite;
     }
 
-    /* İkinci Halka (Kesik Çizgili, Ters Yön) */
     .face-back {
         width: 180px; height: 180px; margin: -90px 0 0 -90px;
         border: 2px dashed rgba(165, 243, 252, 0.6);
         animation: spinOrbitReverse 5s linear infinite;
     }
 
-    /* Üçüncü Halka (Pembe/Mor Detaylı Donanım Vurgusu) */
     .face-right {
         width: 220px; height: 220px; margin: -110px 0 0 -110px;
         border: 3px solid transparent;
@@ -1417,14 +1412,12 @@
         animation: spinOrbit 7s linear infinite;
     }
 
-    /* Dördüncü Halka (Veri Yolu) */
     .face-left {
         width: 260px; height: 260px; margin: -130px 0 0 -130px;
         border: 1px dotted rgba(56, 189, 248, 0.5);
         animation: spinOrbitReverse 10s linear infinite;
     }
 
-    /* Dış Çerçeve (Koyu Mavi Kalkan) */
     .face-top {
         width: 300px; height: 300px; margin: -150px 0 0 -150px;
         border: 2px solid transparent;
@@ -1434,28 +1427,22 @@
         animation: spinOrbit 15s linear infinite;
     }
 
-    /* En Dış İnce Sınır */
     .face-bottom {
         width: 340px; height: 340px; margin: -170px 0 0 -170px;
         border: 1px solid rgba(255, 255, 255, 0.05);
         animation: spinOrbitReverse 20s linear infinite;
     }
 
-    /* 3. MERKEZDEN YAYILAN ENERJİ DALGASI */
     .holo-scanner {
         position: absolute;
         top: 50%; left: 50%;
         width: 80px; height: 80px; margin: -40px 0 0 -40px;
         border-radius: 50%;
         background: radial-gradient(circle, rgba(56, 189, 248, 0.6) 0%, transparent 70%);
-        transform: rotateY(15deg) rotateX(-65deg); /* CPU ile aynı düzlemde düz durur */
+        transform: rotateY(15deg) rotateX(-65deg); 
         animation: pulseWave 2s ease-out infinite;
         z-index: 5;
     }
-
-    /* ========================================================
-    --- ANİMASYON KEYFRAMELERİ ---
-    ======================================================== */
 
     @keyframes spinOrbit { 
         100% { transform: rotateZ(360deg); } 
@@ -1472,7 +1459,6 @@
         100% { transform: rotateX(65deg) rotateY(-15deg) translateZ(-10px); } 
     }
 
-    /* Mobil cihazlar için boyutu toparlama */
     @media (max-width: 768px) {
         .case-holo-stage { transform: scale(0.65); margin-top: 2rem; }
     }
@@ -1490,71 +1476,62 @@
     }
 
     /* =========================================
-    --- TYPEWRITER (DAKTİLO) İMLEÇ EFEKTİ - PREMIUM NEON ---
+    --- TYPEWRITER (DAKTİLO) İMLEÇ EFEKTİ ---
     ========================================= */
     .typewriter-cursor {
         display: inline-block;
-        width: 3px; /* Biraz daha ince ve zarif */
+        width: 3px; 
         height: 1.2em;
-        background-color: #3b82f6; /* Ana marka rengi */
+        background-color: #3b82f6; 
         margin-left: 6px;
         vertical-align: text-bottom;
-        border-radius: 4px; /* Köşeleri yumuşattık */
-        /* İşte sihir burada: Neon parlama efekti ekliyoruz */
+        border-radius: 4px; 
         box-shadow: 0 0 8px rgba(59, 130, 246, 0.8), 0 0 15px rgba(59, 130, 246, 0.4);
-        /* Animasyonu daha akıcı hale getirdik */
         animation: smoothBlink 1.2s ease-in-out infinite;
     }
 
     @keyframes smoothBlink {
         0%, 100% { 
             opacity: 1; 
-            transform: scaleY(1); /* Tam boyutta */
-            filter: brightness(1.2); /* Parlaklık artar */
+            transform: scaleY(1); 
+            filter: brightness(1.2); 
         }
         50% { 
-            opacity: 0.4; /* Tamamen kaybolmaz, silikleşir */
-            transform: scaleY(0.9); /* Hafifçe kısalır */
-            filter: brightness(0.8); /* Parlaklık azalır */
+            opacity: 0.4; 
+            transform: scaleY(0.9); 
+            filter: brightness(0.8); 
         }
     }
 
     /* =========================================
     --- MOBİL UYUMLULUK VE APP HİSSİYATI ---
     ========================================= */
-
-    /* 1. Ekranın sağa sola oynamasını kesin olarak kilitler */
     html, body {
         overflow-x: hidden !important; 
         width: 100%;
         max-width: 100vw;
-        -webkit-overflow-scrolling: touch; /* iOS (iPhone) cihazlarda yağ gibi kaydırma sağlar */
-        -webkit-text-size-adjust: 100%; /* Telefon yan çevrilince yazıların büyümesini engeller */
+        -webkit-overflow-scrolling: touch; 
+        -webkit-text-size-adjust: 100%; 
     }
 
-    /* 2. Telefondaki çirkin mavi tıklama efektini kaldırır, premium hissettirir */
     a, button, div[onclick], .team-card, .sub-product-card {
         -webkit-tap-highlight-color: transparent !important;
         outline: none !important;
-        touch-action: manipulation; /* Çift tıklama gecikmesini siler, anında tepki verir */
+        touch-action: manipulation; 
     }
 
-    /* 3. Mobilde Daktilo (Typewriter) Efektinin Taşmasını Engeller */
     #typewriter-text {
-        word-break: break-word; /* Çok uzun bir kelime denk gelirse alta atar, ekranı bozmaz */
+        word-break: break-word; 
     }
 
     /* =========================================
     --- PREMIUM & GERÇEKÇİ DARK MODE STİLLERİ ---
     ========================================= */
-
-    /* 1. Arka Plan: Dümdüz siyah yerine, derinlik hissi veren radyal OLED gece mavisi */
     body.dark-theme {
         background: radial-gradient(circle at 50% 0%, #111827 0%, #030712 100%) !important;
         color: #f8fafc !important;
     }
 
-    /* 2. Menü (Header): Mat renk yerine, arkasını hafif flu gösteren cam efekti (Glassmorphism) */
     body.dark-theme header, 
     body.dark-theme #mobile-menu,
     body.dark-theme .dropdown-menu {
@@ -1565,7 +1542,6 @@
         box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8) !important;
     }
 
-    /* 3. Ürün Kartları: Işık yansımalı, premium koyu metalik his ve iç gölgeler */
     body.dark-theme .bg-white,
     body.dark-theme .bg-gray-50,
     body.dark-theme .bg-\[\#f8f9fc\],
@@ -1576,7 +1552,6 @@
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
     }
 
-    /* 4. Metinler: Göz yormayan, yüksek kontrastlı ve hafif 3D derinlikli yazılar */
     body.dark-theme .text-slate-800,
     body.dark-theme .text-gray-800,
     body.dark-theme .text-slate-900,
@@ -1586,13 +1561,11 @@
         text-shadow: 0 2px 10px rgba(255, 255, 255, 0.05); 
     }
 
-    /* Alt başlıklar ve detaylar (İkinci plan okumalar) */
     body.dark-theme .text-gray-500,
     body.dark-theme .text-gray-400 {
         color: #94a3b8 !important;
     }
 
-    /* 5. Etkileşim (Hover): Ürünlerin üzerine gelince teknolojik mavi neon parlama */
     body.dark-theme .team-card:hover,
     body.dark-theme .sub-product-card-front:hover,
     body.dark-theme .feature-card-pro:hover {
@@ -1601,7 +1574,6 @@
         transform: translateY(-6px);
     }
 
-    /* Buton ve İkon yansımaları */
     body.dark-theme button svg {
         color: #cbd5e1 !important;
     }
