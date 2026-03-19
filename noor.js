@@ -37,7 +37,18 @@ const translations = {
         contact_form_title: "Get in Touch", lbl_name: "Full Name", lbl_email: "Email Address", lbl_message: "Message", btn_submit: "SEND MESSAGE",
         footer_desc: "At the heart of technology, at the peak of speed. Professional computer and fiber optic solutions.",
         footer_links: "Quick Links", footer_contact: "Contact", footer_follow: "Follow Us",
-        val_required: "This field is required", val_email_error: "Invalid email"
+        val_required: "This field is required", val_email_error: "Invalid email",
+        
+        /* HTML'de ID'si Olmayan Ancak JS Üzerinden Çevirilen Eklemeler */
+        alert_success: "Message sent successfully!",
+        alert_error: "An error occurred, please try again later.",
+        premium_series: "Premium Series",
+        portable_stand: "Portable Laptop Stand",
+        multi_table: "Multifunctional Laptop Table",
+        multi_stand_fan: "Multifunctional Laptop Stand + Cooling FAN",
+        select_lang_mobile: "Select Language",
+        footer_copyright: "© 2002 NOOR NETWORK. All rights reserved.",
+        footer_address: "Technology Dist. sultan muthafer St.<br>Iraq, Erbil"
     },
     tr: {
         nav_home: "Ana Sayfa", nav_computer: "Bilgisayar", nav_fiber: "Fiber Optik", nav_partners: "Projelerimiz", nav_about: "Hakkımızda",
@@ -63,7 +74,18 @@ const translations = {
         contact_form_title: "Bize Ulaşın", lbl_name: "Ad Soyad", lbl_email: "E-posta Adresi", lbl_message: "Mesaj", btn_submit: "MESAJ GÖNDER",
         footer_desc: "Teknolojinin kalbinde, hızın zirvesinde. Profesyonel bilgisayar ve fiber optik çözümleri.",
         footer_links: "Hızlı Bağlantılar", footer_contact: "İletişim", footer_follow: "Bizi Takip Edin",
-        val_required: "Bu alan zorunludur", val_email_error: "Geçersiz e-posta"
+        val_required: "Bu alan zorunludur", val_email_error: "Geçersiz e-posta",
+        
+        /* HTML'de ID'si Olmayan Ancak JS Üzerinden Çevirilen Eklemeler */
+        alert_success: "Mesajınız başarıyla gönderildi!",
+        alert_error: "Bir hata oluştu, lütfen daha sonra tekrar deneyin.",
+        premium_series: "Premium Seri",
+        portable_stand: "Taşınabilir Laptop Standı",
+        multi_table: "Çok Fonksiyonlu Laptop Masası",
+        multi_stand_fan: "Çok Fonksiyonlu Laptop Standı + Soğutucu Fan",
+        select_lang_mobile: "Dil Seçin",
+        footer_copyright: "© 2002 NOOR NETWORK. Tüm hakları saklıdır.",
+        footer_address: "Teknoloji Bölgesi Sultan Muzaffer Cad.<br>Irak, Erbil"
     },
     ar: {
         nav_home: "الرئيسية", nav_computer: "الكمبيوتر", nav_fiber: "ألياف ضوئية", nav_partners: "معرض المشاريع", nav_about: "معلومات عنا",
@@ -89,7 +111,18 @@ const translations = {
         contact_form_title: "ابق على تواصل", lbl_name: "الاسم الكامل", lbl_email: "البريد الإلكتروني", lbl_message: "الرسالة", btn_submit: "إرسال رسالة",
         footer_desc: "في قلب التكنولوجيا، في قمة السرعة. حلول كمبيوتر وألياف ضوئية احترافية.",
         footer_links: "روابط سريعة", footer_contact: "اتصل بنا", footer_follow: "تابعنا",
-        val_required: "هذا الحقل مطلوب", val_email_error: "بريد إلكتروني غير صالح"
+        val_required: "هذا الحقل مطلوب", val_email_error: "بريد إلكتروني غير صالح",
+
+        /* HTML'de ID'si Olmayan Ancak JS Üzerinden Çevirilen Eklemeler */
+        alert_success: "تم إرسال الرسالة بنجاح!",
+        alert_error: "حدث خطأ، يرجى المحاولة مرة أخرى لاحقاً.",
+        premium_series: "سلسلة بريميوم",
+        portable_stand: "حامل لابتوب محمول",
+        multi_table: "طاولة لابتوب متعددة الوظائف",
+        multi_stand_fan: "حامل لابتوب متعدد الوظائف + مروحة تبريد",
+        select_lang_mobile: "اختر اللغة",
+        footer_copyright: "© 2002 نور نتورك. جميع الحقوق محفوظة.",
+        footer_address: "حي التكنولوجيا، شارع السلطان مظفر<br>العراق، أربيل"
     },
     ku: {
         nav_home: "سەرەکی", nav_computer: "کۆمپیوتەر", nav_fiber: "فایبەر ئۆپتیک", nav_partners: "پڕۆژەکانمان", nav_about: "دەربارەی ئێمە",
@@ -115,7 +148,18 @@ const translations = {
         contact_form_title: "پەیوەندیمان پێوە بکە", lbl_name: "ناوی تەواو", lbl_email: "ئیمەیڵ", lbl_message: "نامە", btn_submit: "ناردنی نامە",
         footer_desc: "لە دڵی تەکنەلۆجیادا، لە لوتکەی خێراییدا. باشترین چارەسەری کۆمپیوتەر و فایبەر ئۆپتیک.",
         footer_links: "بەستەرە خێراکان", footer_contact: "پەیوەندی", footer_follow: "فۆڵۆومان بکە",
-        val_required: "ئەم بوارە داواکراوە", val_email_error: "ئیمەیڵەکە هەڵەیە"
+        val_required: "ئەم بوارە داواکراوە", val_email_error: "ئیمەیڵەکە هەڵەیە",
+
+        /* HTML'de ID'si Olmayan Ancak JS Üzerinden Çevirilen Eklemeler */
+        alert_success: "نامەکە بە سەرکەوتوویی نێردرا!",
+        alert_error: "هەڵەیەک ڕوویدا، تکایە دواتر هەوڵ بدەرەوە.",
+        premium_series: "زنجیرەی نایاب",
+        portable_stand: "ستاندی لاپتۆپی گوازراوە",
+        multi_table: "مێزی لاپتۆپی فرەکار",
+        multi_stand_fan: "ستاندی لاپتۆپی فرەکار + پانکەی ساردکەرەوە",
+        select_lang_mobile: "زمان هەڵبژێرە",
+        footer_copyright: "© 2002 نوور نێتۆرک. هەموو مافەکان پارێزراون.",
+        footer_address: "ناوچەی تەکنەلۆجیا، شەقامی سوڵتان موزەفەر<br>عێراق، هەولێر"
     }
 };
 
@@ -200,6 +244,56 @@ function setLanguage(lang) {
         }
     });
 
+    /* =========================================================
+       HTML'DE OLMAYAN ANCAK JS ÜZERİNDEN ÇEVİRİLEN ALANLAR 
+       ========================================================= */
+    
+    // İletişim Formu (data-i18n etiketine sahip olmayan alanlar)
+    const inputName = document.querySelector('form input[name="name"]');
+    if(inputName) inputName.placeholder = translations[lang]['lbl_name'];
+
+    const inputEmail = document.querySelector('form input[name="email"]');
+    if(inputEmail) inputEmail.placeholder = translations[lang]['lbl_email'];
+
+    const inputMessage = document.querySelector('form textarea[name="message"]');
+    if(inputMessage) inputMessage.placeholder = translations[lang]['lbl_message'];
+
+    const btnSubmit = document.querySelector('form button[type="submit"]');
+    if(btnSubmit) btnSubmit.textContent = translations[lang]['btn_submit'];
+
+    // Kasa Sayfası - Premium Series Rozeti
+    const premiumBadge = document.querySelector('.case-hero-section .text-blue-300');
+    if(premiumBadge) premiumBadge.textContent = translations[lang]['premium_series'];
+
+    // Mobil Menü - "Select Language" Başlığı
+    const mobileLangTitle = document.querySelector('#mobile-menu .uppercase.mb-4');
+    if (mobileLangTitle) mobileLangTitle.textContent = translations[lang]['select_lang_mobile'];
+
+    // Footer - Adres ve Telif Hakkı
+    const copyright = document.querySelector('footer .text-\\[12px\\]');
+    if (copyright) copyright.textContent = translations[lang]['footer_copyright'];
+
+    const addressSpan = document.querySelector('footer a[href*="maps"] span');
+    if (addressSpan) addressSpan.innerHTML = translations[lang]['footer_address'];
+
+    // Ürün Kartları Stand ve Masa İsimleri
+    document.querySelectorAll('.sub-product-card-title').forEach(el => {
+        const text = el.textContent.trim();
+        const orig = el.getAttribute('data-orig-text') || text;
+        
+        if (!el.hasAttribute('data-orig-text')) {
+            el.setAttribute('data-orig-text', text);
+        }
+
+        if (orig === 'Portable Laptop Stand') {
+            el.textContent = translations[lang]['portable_stand'];
+        } else if (orig === 'Multifunctional Laptop table') {
+            el.textContent = translations[lang]['multi_table'];
+        } else if (orig === 'Multifunctional Laptop Stand + Cooling FAN') {
+            el.textContent = translations[lang]['multi_stand_fan'];
+        }
+    });
+
     updateFormValidation(lang);
 
     if (lang === 'ar' || lang === 'ku') {
@@ -224,7 +318,7 @@ function setLanguage(lang) {
 }
 
 function updateFormValidation(lang) {
-    const inputs = document.querySelectorAll('#contactForm input[required], #contactForm textarea[required]');
+    const inputs = document.querySelectorAll('form input[required], form textarea[required]');
     inputs.forEach(input => {
         input.oninvalid = function(e) {
             e.target.setCustomValidity("");
@@ -309,11 +403,14 @@ function toggleLangDropdown() {
 function sendEmail(event) {
     event.preventDefault(); 
 
-    const name = document.getElementById('contactName').value;
-    const email = document.getElementById('contactEmail').value;
-    const message = document.getElementById('contactMessage').value;
+    const form = event.target;
+    const name = form.querySelector('input[name="name"]').value;
+    const email = form.querySelector('input[name="email"]').value;
+    const message = form.querySelector('textarea[name="message"]').value;
+    const currentLang = localStorage.getItem('preferredLanguage') || 'en';
 
-    fetch("https://formsubmit.co/ajax/ariadnanmanaf@gmail.com", {
+    // HTML değiştirilmediği için standart post işlemini ajax ile araya girerek gönderiyoruz
+    fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
@@ -327,12 +424,13 @@ function sendEmail(event) {
     })
     .then(response => response.json())
     .then(data => {
-        alert("Mesajınız başarıyla gönderildi / Message sent successfully!"); 
-        document.getElementById('contactForm').reset();
+        // Çevrilmiş dinamik mesaj gösterimi
+        alert(translations[currentLang]['alert_success']); 
+        form.reset();
     })
     .catch(error => {
         console.log(error);
-        alert("Bir hata oluştu, lütfen daha sonra tekrar deneyin.");
+        alert(translations[currentLang]['alert_error']);
     });
 }
 
@@ -410,7 +508,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.scrollTo(0, 0);
     
-    // 2. URL'DEKİ HASH KISMINI OKU VE KALDIĞI YERDEN DEVAM ET (DÜZELTİLEN KISIM)
+    // FormSubmit Event Listener'ını otomatik ekle
+    const form = document.querySelector('form[action*="formsubmit"]');
+    if(form) {
+        form.addEventListener('submit', sendEmail);
+    }
+    
+    // 2. URL'DEKİ HASH KISMINI OKU VE KALDIĞI YERDEN DEVAM ET
     let currentHash = window.location.hash.substring(1);
     if (!currentHash || !document.getElementById(currentHash)) {
         currentHash = 'home';
