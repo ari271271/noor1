@@ -1576,4 +1576,59 @@
 
     body.dark-theme button svg {
         color: #cbd5e1 !important;
-    }   
+    }
+
+    /* =========================================
+   TÜM KARTLARDA ARKA YÜZ İÇİN DİKEY KAYDIRMA
+   ========================================= */
+.sub-product-card-back ul {
+    max-height: 140px;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-bottom: 12px;
+}
+
+/* Scrollbar stilleri - Webkit tarayıcılar (Chrome, Edge, Safari) */
+.sub-product-card-back ul::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sub-product-card-back ul::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.sub-product-card-back ul::-webkit-scrollbar-thumb {
+    background: #60a5fa;
+    border-radius: 10px;
+}
+
+.sub-product-card-back ul::-webkit-scrollbar-thumb:hover {
+    background: #3b82f6;
+}
+
+/* Mobil için düzenleme */
+@media (max-width: 768px) {
+    .sub-product-card-back ul {
+        max-height: 120px;
+    }
+}
+
+/* Dark mode uyumu */
+body.dark-theme .sub-product-card-back ul::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .sub-product-card-back ul::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+}
+
+/* Firefox için */
+.sub-product-card-back ul {
+    scrollbar-width: thin;
+    scrollbar-color: #60a5fa rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .sub-product-card-back ul {
+    scrollbar-color: #3b82f6 rgba(0, 0, 0, 0.3);
+}
