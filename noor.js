@@ -567,4 +567,4 @@ document.addEventListener('DOMContentLoaded', () => {
             img.setAttribute('loading', 'lazy');
         }
     });
-});
+}); 
