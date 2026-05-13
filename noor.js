@@ -5,9 +5,10 @@
    3. LANGUAGE & THEME (Dil ve Tema Yönetimi)
    4. DYNAMIC RENDER (Ürünleri Ekrana Basma)
    5. UI & INTERACTION (Menü, Form, Efektler)
+   6. CASE CARDS AUTO TRANSLATE (Kasa kartları otomatik çeviri)
    ========================================================================== */
 
-let typeTimeout; // Daktilo animasyonunu sıfırlamak için eklendi
+let typeTimeout;
 
 /* =========================================
    1. DATA: ÇEVİRİLER
@@ -38,8 +39,6 @@ const translations = {
         footer_desc: "At the heart of technology, at the peak of speed. Professional computer and fiber optic solutions.",
         footer_links: "Quick Links", footer_contact: "Contact", footer_follow: "Follow Us",
         val_required: "This field is required", val_email_error: "Invalid email",
-        
-        /* HTML'de ID'si Olmayan Ancak JS Üzerinden Çevirilen Eklemeler */
         alert_success: "Message sent successfully!",
         alert_error: "An error occurred, please try again later.",
         premium_series: "Premium Series",
@@ -75,8 +74,6 @@ const translations = {
         footer_desc: "Teknolojinin kalbinde, hızın zirvesinde. Profesyonel bilgisayar ve fiber optik çözümleri.",
         footer_links: "Hızlı Bağlantılar", footer_contact: "İletişim", footer_follow: "Bizi Takip Edin",
         val_required: "Bu alan zorunludur", val_email_error: "Geçersiz e-posta",
-        
-        /* HTML'de ID'si Olmayan Ancak JS Üzerinden Çevirilen Eklemeler */
         alert_success: "Mesajınız başarıyla gönderildi!",
         alert_error: "Bir hata oluştu, lütfen daha sonra tekrar deneyin.",
         premium_series: "Premium Seri",
@@ -112,8 +109,6 @@ const translations = {
         footer_desc: "في قلب التكنولوجيا، في قمة السرعة. حلول كمبيوتر وألياف ضوئية احترافية.",
         footer_links: "روابط سريعة", footer_contact: "اتصل بنا", footer_follow: "تابعنا",
         val_required: "هذا الحقل مطلوب", val_email_error: "بريد إلكتروني غير صالح",
-
-        /* HTML'de ID'si Olmayan Ancak JS Üzerinden Çevirilen Eklemeler */
         alert_success: "تم إرسال الرسالة بنجاح!",
         alert_error: "حدث خطأ، يرجى المحاولة مرة أخرى لاحقاً.",
         premium_series: "سلسلة بريميوم",
@@ -130,7 +125,7 @@ const translations = {
         hero_desc: "ئەندازیاری ورد بۆ ژێرخانی تۆڕەکان. باشترین چارەسەری فایبەر ئۆپتیک و خزمەتگوزاری پیشەیی کۆمپیوتەر پێشکەش دەکەین.",
         btn_fiber: "زیاتر بزانە", btn_contact: "پەیوەندیمان پێوە بکە",
         feat_speed_title: "خێرایی زۆر", feat_speed_desc: "نەوەی نوێی ژێرخانی فایبەر ئۆپتیک خێرایی گێگابایت بێ دواکەوتن پێشکەش دەکات.",
-        feat_security_title: "سیستەمی پارێزراو", feat_security_desc: "پرۆتۆکۆڵی پێشکەوتووی ئاسایش و خزمەتگوزاری چاککردنەوەی مسۆگەرکراو.",
+        feat_security_title: "سیستەمی پارێزراو", feat_security_desc: "پرۆتۆکۆڵی پێشکەوتووی ئاسایش و خزمەتگوزاری چاکردنەوەی مسۆگەرکراو.",
         feat_corporate_title: "ئامادە بۆ کۆمپانیاکان", feat_corporate_desc: "چارەسەری تایبەتی ئایتی بۆ کۆمپانیاکان. ژێرخانێکی فراوان بۆ گەشەکردن.",
         computer_title: "چارەسەرەکانی کۆمپیوتەر", computer_desc: "خزمەتگوزاری پیشەیی کۆمپیوتەر و ئامێری ئاست بەرز.",
         comp_card_1: "لاپتۆپی نوێ", comp_card_2: "کۆمپیوتەری بەکارهاتوو", comp_card_3: "پادی ساردکەرەوە", comp_card_4: "کەیسی کۆمپیوتەر", 
@@ -149,8 +144,6 @@ const translations = {
         footer_desc: "لە دڵی تەکنەلۆجیادا، لە لوتکەی خێراییدا. باشترین چارەسەری کۆمپیوتەر و فایبەر ئۆپتیک.",
         footer_links: "بەستەرە خێراکان", footer_contact: "پەیوەندی", footer_follow: "فۆڵۆومان بکە",
         val_required: "ئەم بوارە داواکراوە", val_email_error: "ئیمەیڵەکە هەڵەیە",
-
-        /* HTML'de ID'si Olmayan Ancak JS Üzerinden Çevirilen Eklemeler */
         alert_success: "نامەکە بە سەرکەوتوویی نێردرا!",
         alert_error: "هەڵەیەک ڕوویدا، تکایە دواتر هەوڵ بدەرەوە.",
         premium_series: "زنجیرەی نایاب",
@@ -166,25 +159,7 @@ const translations = {
 /* =========================================
    1.1 DATA: ÜRÜN LİSTELERİ (Dinamik Render İçin)
    ========================================= */
-const productsData = {
-    lenovo: [
-        {
-            title: "<span>Lenovo Ideapad</span> Slim 3",
-            img: "./photo/placeholder.webp", 
-            features: ["Intel Core i5 - 12th Gen", "RAM 8GB DDR4", "HARD 512GB SSD", "15.6\" inch FHD"],
-            whatsapp: "https://wa.me/9647504533130"
-        },
-        {
-            title: "<span>Lenovo ThinkPad</span> T14",
-            img: "./photo/placeholder.webp",
-            features: ["Intel Core i7 - 11th Gen", "RAM 16GB DDR4", "HARD 1TB SSD", "14\" inch FHD"],
-            whatsapp: "https://wa.me/9647504533130"
-        }
-    ]
-};
-
 const whatsappSVG = `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>`;
-
 
 /* =========================================
    2. YÖNLENDİRME (ROUTING) SİSTEMİ VE SEO
@@ -220,7 +195,6 @@ window.addEventListener('popstate', (event) => {
     }
 });
 
-
 /* =========================================
    3. LANGUAGE & THEME YÖNETİMİ
    ========================================= */
@@ -244,11 +218,7 @@ function setLanguage(lang) {
         }
     });
 
-    /* =========================================================
-       HTML'DE OLMAYAN ANCAK JS ÜZERİNDEN ÇEVİRİLEN ALANLAR 
-       ========================================================= */
-    
-    // İletişim Formu (data-i18n etiketine sahip olmayan alanlar)
+    // İletişim Formu
     const inputName = document.querySelector('form input[name="name"]');
     if(inputName) inputName.placeholder = translations[lang]['lbl_name'];
 
@@ -261,22 +231,18 @@ function setLanguage(lang) {
     const btnSubmit = document.querySelector('form button[type="submit"]');
     if(btnSubmit) btnSubmit.textContent = translations[lang]['btn_submit'];
 
-    // Kasa Sayfası - Premium Series Rozeti
     const premiumBadge = document.querySelector('.case-hero-section .text-blue-300');
     if(premiumBadge) premiumBadge.textContent = translations[lang]['premium_series'];
 
-    // Mobil Menü - "Select Language" Başlığı
     const mobileLangTitle = document.querySelector('#mobile-menu .uppercase.mb-4');
     if (mobileLangTitle) mobileLangTitle.textContent = translations[lang]['select_lang_mobile'];
 
-    // Footer - Adres ve Telif Hakkı
     const copyright = document.querySelector('footer .text-\\[12px\\]');
     if (copyright) copyright.textContent = translations[lang]['footer_copyright'];
 
     const addressSpan = document.querySelector('footer a[href*="maps"] span');
     if (addressSpan) addressSpan.innerHTML = translations[lang]['footer_address'];
 
-    // Ürün Kartları Stand ve Masa İsimleri
     document.querySelectorAll('.sub-product-card-title').forEach(el => {
         const text = el.textContent.trim();
         const orig = el.getAttribute('data-orig-text') || text;
@@ -315,6 +281,9 @@ function setLanguage(lang) {
 
     // Dil değiştiğinde daktilo efektini yeniden başlat
     startTypewriter();
+    
+    // *** YENİ: Kasa kartlarını otomatik çevir (TR hariç İngilizce) ***
+    translateCaseCardsToEnglish();
 }
 
 function updateFormValidation(lang) {
@@ -355,40 +324,154 @@ function updateThemeIcon(isDark) {
     }
 }
 
-
 /* =========================================
-   4. DYNAMIC RENDER (Ürünleri Otomatik Basma)
+   4. KASA KARTLARI OTOMATİK ÇEVİRİ (TR hariç İngilizce)
    ========================================= */
-function renderProducts(containerId, productsArray) {
-    const container = document.getElementById(containerId);
-    if (!container) return; 
+function translateCaseCardsToEnglish() {
+    const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+    
+    // SADECE Türkçe değilse çevir (AR, KU, EN hepsi İngilizce olacak)
+    if (currentLang === 'tr') return;
 
-    container.innerHTML = productsArray.map(product => `
-        <div class="sub-product-card reveal-on-scroll" onclick="this.classList.toggle('flipped')">
-            <div class="sub-product-card-inner">
-                <div class="sub-product-card-front">
-                    <div class="sub-product-card-img-wrapper">
-                        <img src="${product.img}" loading="lazy" alt="${product.title.replace(/<[^>]*>?/gm, '')}" class="sub-product-card-img">
-                    </div>
-                    <h3 class="sub-product-card-title">${product.title}</h3>
-                </div>
-                <div class="sub-product-card-back">
-                    <h4 data-i18n="features">Features</h4>
-                    <ul>
-                        ${product.features.map(feature => `<li>${feature}</li>`).join('')}
-                    </ul>
-                    <a href="${product.whatsapp}" target="_blank" onclick="event.stopPropagation()" class="w-full py.5 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2">
-                        ${whatsappSVG} <span data-i18n="btn_whatsapp">WhatsApp</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    `).join('');
+    // Türkçe -> İngilizce çeviri sözlüğü (tüm kasa kartları için)
+    const caseTranslations = {
+        // Kart başlıkları
+        "Case Adjudicator Pink Without fans": "Case Adjudicator Pink Without Fans",
+        "Case COOLMOON Aosor Black": "Case COOLMOON Aosor Black",
+        "Case Lian Li O11D EVO RGB E-ATX White": "Case Lian Li O11D EVO RGB E-ATX White",
+        "Case Lian Li O11D EVO RGB E-ATX Black": "Case Lian Li O11D EVO RGB E-ATX Black",
+        "Case LOVING COOL LC-GJ Plus White 4 Fans ARGB": "Case LOVING COOL LC-GJ Plus White 4 Fans ARGB",
+        "Case LOVING COOL LC-GJ Plus White With 4 Fans ARGB": "Case LOVING COOL LC-GJ Plus White With 4 Fans ARGB",
+        "CASE Lovingcool LC-MJ360 Black": "CASE Lovingcool LC-MJ360 Black",
+        "CASE Lovingcool 360 Black": "CASE Lovingcool 360 Black",
+        "CASE Lovingcool 360 White": "CASE Lovingcool 360 White",
+        "CASE Lovingcool LC 850 Black": "CASE Lovingcool LC 850 Black",
+        "CASE Lovingcool LC 850 White": "CASE Lovingcool LC 850 White",
+        "CASE Lovingcool LC 850 White2": "CASE Lovingcool LC 850 White",
+        "CASE Lovingcool LC-218D Black": "CASE Lovingcool LC-218D Black",
+        "CASE Lovingcool LC-218D White": "CASE Lovingcool LC-218D White",
+        "CASE Lovingcool LC-360j Black": "CASE Lovingcool LC-360j Black",
+        "CASE Lovingcool LC-360J White": "CASE Lovingcool LC-360J White",
+        "CASE Lovingcool LC-900 Black": "CASE Lovingcool LC-900 Black",
+        "CASE Lovingcool LC-900 White": "CASE Lovingcool LC-900 White",
+        "CASE Lovingcool LC-HXZ White": "CASE Lovingcool LC-HXZ White",
+        "CASE Lovingcool LC-HXZ, Black 4 FAN": "CASE Lovingcool LC-HXZ, Black 4 FAN",
+        "CASE Lovingcool LC-MJ360 White": "CASE Lovingcool LC-MJ360 White",
+        "CASE Lovingcool LC-MXJ MINI Black": "CASE Lovingcool LC-MXJ MINI Black",
+        "CASE Lovingcool LC-MXJ MINI White": "CASE Lovingcool LC-MXJ MINI White",
+        "CASE Lovingcool LC-T2 Black": "CASE Lovingcool LC-T2 Black",
+        "CASE Lovingcool LC-T2 White": "CASE Lovingcool LC-T2 White",
+        "CASE Lovingcool LC-T4 Black": "CASE Lovingcool LC-T4 Black",
+        "CASE Lovingcool LC-T4 White": "CASE Lovingcool LC-T4 White",
+        "CASE Lovingcool LC-THV1 Black": "CASE Lovingcool LC-THV1 Black",
+        "CASE Lovingcool LC-TJS1 White": "CASE Lovingcool LC-TJS1 White",
+        "CASE MSI MAG 320 ATX": "CASE MSI MAG 320 ATX",
+        "Case Rog Max 330-6 Desktop ATX ARGB": "Case Rog Max 330-6 Desktop ATX ARGB",
+        "CASE ROG MAX CM002 Mini K Pink": "CASE ROG MAX CM002 Mini K Pink",
+        "CASE ROG MAX CM002 Plus Black ATX": "CASE ROG MAX CM002 Plus Black ATX",
+        "CASE ROG MAX CM002 Plus PINK ATX": "CASE ROG MAX CM002 Plus PINK ATX",
+        "CASE ROG MAX CM002-Plus PINK DYED ATX": "CASE ROG MAX CM002-Plus PINK DYED ATX",
+        "CASE ROG MAX D600 Black M-ATX": "CASE ROG MAX D600 Black M-ATX",
+        "CASE ROG MAX JY08 Black M-ATX": "CASE ROG MAX JY08 Black M-ATX",
+        "CASE ROG MAX JY08-G M-ATX": "CASE ROG MAX JY08-G M-ATX",
+        "CASE ROG MAX JY09 Blue M-ATX": "CASE ROG MAX JY09 Blue M-ATX",
+        "CASE ROG MAX JY09 Pink DYD M-ATX": "CASE ROG MAX JY09 Pink DYD M-ATX",
+        "CASE ROG MAX JY09-Black M-ATX": "CASE ROG MAX JY09-Black M-ATX",
+        "Case Rog Max Monster Black M-ATX": "Case Rog Max Monster Black M-ATX",
+        "Case Rogmax L850 Black": "Case Rogmax L850 Black",
+        "CASE ROGMAX MINI Black": "CASE ROGMAX MINI Black",
+        "Case Ruix Aerospace Ultra-X ATX Full View White": "Case Ruix Aerospace Ultra-X ATX Full View White",
+        "Case Ruix Space ARGB 360 ATX Black": "Case Ruix Space ARGB 360 ATX Black",
+        "Case Ruix Space ARGB 360 ATX White": "Case Ruix Space ARGB 360 ATX White",
+        "CASE Thermaltake Steel Shadow S MINI 240 Black": "CASE Thermaltake Steel Shadow S MINI 240 Black",
+        "CASE Thermaltake Steel Shadow S MINI 240 White": "CASE Thermaltake Steel Shadow S MINI 240 White",
+        "Case Thermaltake View 270 SP Edition Black": "Case Thermaltake View 270 SP Edition Black",
+        "CASE WJCOOLMAN MINI Black": "CASE WJCOOLMAN MINI Black",
+        "Case YD-WJDK ATX": "Case YD-WJDK ATX",
+        "Computer Case ATX With Display Screen 13.3″ LCD": "Computer Case ATX With Display Screen 13.3″ LCD",
+        "LOVINGCOOL Full Tower ATX With Display Screen": "LOVINGCOOL Full Tower ATX With Display Screen",
+        "MSI PAG M100L Tomahawk MINI Black": "MSI PAG M100L Tomahawk MINI Black",
+        "MSI PAG PANO M110A – Mid-Tower Black": "MSI PAG PANO M110A – Mid-Tower Black",
+        "MSI PAG PANO M110A Mid Tower White": "MSI PAG PANO M110A Mid Tower White",
+        "MSI PAG PANO M110A Mid-Tower White": "MSI PAG PANO M110A Mid-Tower White",
+        "Thermaltake View 270 Plus TG White": "Thermaltake View 270 Plus TG White",
+        
+        // Özellik çevirileri (Türkçe -> İngilizce)
+        "Kasa Tipi:": "Case Type:",
+        "Anakart:": "Motherboard:",
+        "Malzeme:": "Material:",
+        "GPU Limiti:": "GPU Limit:",
+        "CPU Soğutucu:": "CPU Cooler:",
+        "Fan Desteği:": "Fan Support:",
+        "Toz Filtresi:": "Dust Filter:",
+        "Radyatör Desteği:": "Radiator Support:",
+        "Depolama:": "Storage:",
+        "Genişleme Yuvası:": "Expansion Slots:",
+        "Ön Portlar:": "Front Ports:",
+        "Yan Panel:": "Side Panel:",
+        "Tasarım:": "Design:",
+        "Adet": "Pieces",
+        "Maksimum": "Maximum",
+        "Dahili": "Built-in",
+        "Toplam": "Total",
+        "Kapasitesi": "Capacity",
+        "Çelik": "Steel",
+        "Cam": "Glass",
+        "Alüminyum": "Aluminum",
+        "Temperli Cam": "Tempered Glass",
+        "SPCC": "SPCC",
+        "Elmas kesim ön panel ve kolay kablo yönetimi": "Diamond cut front panel and easy cable management",
+        "Manyetik": "Magnetic",
+        "Üst": "Top",
+        "Ön": "Front",
+        "Arka": "Rear",
+        "Alt": "Bottom",
+        "Standart ATX güç kaynağı desteği": "Standard ATX power supply support",
+        "Pencereli yan panel tasarımı": "Windowed side panel design",
+        "Alüminyum alaşım": "Aluminum alloy",
+        "ve": "and",
+        "USB 3.0": "USB 3.0",
+        "USB 2.0": "USB 2.0",
+        "HD Audio": "HD Audio",
+        "Mikrofon": "Microphone",
+        "Type-C": "Type-C",
+        "RGB Fanlı": "RGB Fan",
+        "ARGB Fanlı": "ARGB Fan",
+        "6GB RTX 3050": "6GB RTX 3050",
+        "2GB NVidia MX330 Graphics": "2GB NVidia MX330 Graphics",
+        "Original Pen": "Original Pen",
+        "Android OS": "Android OS",
+        "HP Brand": "HP Brand"
+    };
+
+    // Tüm kasa kartlarının başlıklarını çevir
+    document.querySelectorAll('#comp_case .sub-product-card .sub-product-card-title').forEach(title => {
+        const originalText = title.textContent.trim();
+        if (caseTranslations[originalText]) {
+            title.textContent = caseTranslations[originalText];
+        }
+    });
+
+    // Tüm kasa kartlarının özellik listelerini çevir
+    document.querySelectorAll('#comp_case .sub-product-card-back ul li').forEach(li => {
+        const originalText = li.textContent.trim();
+        let translatedText = originalText;
+        
+        // Her bir Türkçe kelime/ifadeyi İngilizce'ye çevir
+        for (const [tr, en] of Object.entries(caseTranslations)) {
+            if (originalText.includes(tr)) {
+                translatedText = translatedText.replace(new RegExp(tr, 'g'), en);
+            }
+        }
+        
+        if (translatedText !== originalText) {
+            li.textContent = translatedText;
+        }
+    });
 }
 
-
 /* =========================================
-   5. UI & ETKİLEŞİMLER (FormSubmit Entegreli)
+   5. UI & ETKİLEŞİMLER
    ========================================= */
 function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
@@ -409,7 +492,6 @@ function sendEmail(event) {
     const message = form.querySelector('textarea[name="message"]').value;
     const currentLang = localStorage.getItem('preferredLanguage') || 'en';
 
-    // HTML değiştirilmediği için standart post işlemini ajax ile araya girerek gönderiyoruz
     fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
         method: "POST",
         headers: { 
@@ -424,7 +506,6 @@ function sendEmail(event) {
     })
     .then(response => response.json())
     .then(data => {
-        // Çevrilmiş dinamik mesaj gösterimi
         alert(translations[currentLang]['alert_success']); 
         form.reset();
     })
@@ -471,11 +552,6 @@ function switchCasePage(pageNum) {
     window.scrollTo({ top: sectionTop - 100, behavior: 'smooth' });
 }
 
-
-/* =========================================
-   6. BÜTÜN SİSTEMİ BAŞLATAN ANA FONKSİYON (INIT)
-   ========================================= */
-
 function startTypewriter() {
     const typeText = document.getElementById('typewriter-text');
     if (!typeText) return;
@@ -486,7 +562,6 @@ function startTypewriter() {
     typeText.textContent = '';
     let i = 0;
     
-    // Önceki yazma animasyonunu sıfırla
     clearTimeout(typeTimeout);
     
     function type() {
@@ -496,25 +571,24 @@ function startTypewriter() {
             typeTimeout = setTimeout(type, 120); 
         }
     }
-    // Animasyonu başlat
     typeTimeout = setTimeout(type, 800); 
 }
 
+/* =========================================
+   6. BÜTÜN SİSTEMİ BAŞLATAN ANA FONKSİYON (INIT)
+   ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. TARAYICIYI ZORLA EN ÜSTE AL
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
     window.scrollTo(0, 0);
     
-    // FormSubmit Event Listener'ını otomatik ekle
     const form = document.querySelector('form[action*="formsubmit"]');
     if(form) {
         form.addEventListener('submit', sendEmail);
     }
     
-    // 2. URL'DEKİ HASH KISMINI OKU VE KALDIĞI YERDEN DEVAM ET
     let currentHash = window.location.hash.substring(1);
     if (!currentHash || !document.getElementById(currentHash)) {
         currentHash = 'home';
@@ -532,7 +606,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLanguage') || 'en';
     setLanguage(savedLang);
 
-    // Tüm yönlendirmeler ve yerleşimler bittikten sonra ekranı yumuşakça aydınlat
     requestAnimationFrame(() => {
         document.body.style.opacity = '1';
     });
@@ -547,15 +620,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
-    // 3. AKTİF SAYFADAKİ ELEMANLARIN HEMEN GÖRÜNMESİ İÇİN DÜZELTME
     document.querySelectorAll('section, .feature-card-pro, .team-card, .sub-product-card').forEach((el) => {
-        // Eğer eleman o an yüklenen sayfadaysa (currentHash) beklemeden göster
         if (el.closest('#' + currentHash)) {
             el.classList.add('visible'); 
             el.style.opacity = '1';
             el.style.transform = 'translateY(0)';
         } else {
-            // Aşağılarda kalan veya diğer sayfalardaki elemanlar için scroll animasyonu
             el.classList.add('reveal-on-scroll');
             observer.observe(el);
         }
@@ -567,4 +637,4 @@ document.addEventListener('DOMContentLoaded', () => {
             img.setAttribute('loading', 'lazy');
         }
     });
-}); 
+});
