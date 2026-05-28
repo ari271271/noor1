@@ -6,6 +6,7 @@
    4. DYNAMIC RENDER (Ürünleri Ekrana Basma)
    5. UI & INTERACTION (Menü, Form, Efektler)
    6. CASE CARDS AUTO TRANSLATE (Kasa kartları otomatik çeviri)
+   7. FIBER OPTIC SAYFALAMA
    ========================================================================== */
 
 let typeTimeout;
@@ -282,7 +283,7 @@ function setLanguage(lang) {
     // Dil değiştiğinde daktilo efektini yeniden başlat
     startTypewriter();
     
-    // *** YENİ: Kasa kartlarını otomatik çevir (TR hariç İngilizce) ***
+    // Kasa kartlarını otomatik çevir (TR hariç İngilizce)
     translateCaseCardsToEnglish();
 }
 
@@ -330,12 +331,9 @@ function updateThemeIcon(isDark) {
 function translateCaseCardsToEnglish() {
     const currentLang = localStorage.getItem('preferredLanguage') || 'en';
     
-    // SADECE Türkçe değilse çevir (AR, KU, EN hepsi İngilizce olacak)
     if (currentLang === 'tr') return;
 
-    // Türkçe -> İngilizce çeviri sözlüğü (tüm kasa kartları için)
     const caseTranslations = {
-        // Kart başlıkları
         "Case Adjudicator Pink Without fans": "Case Adjudicator Pink Without Fans",
         "Case COOLMOON Aosor Black": "Case COOLMOON Aosor Black",
         "Case Lian Li O11D EVO RGB E-ATX White": "Case Lian Li O11D EVO RGB E-ATX White",
@@ -395,8 +393,6 @@ function translateCaseCardsToEnglish() {
         "MSI PAG PANO M110A Mid Tower White": "MSI PAG PANO M110A Mid Tower White",
         "MSI PAG PANO M110A Mid-Tower White": "MSI PAG PANO M110A Mid-Tower White",
         "Thermaltake View 270 Plus TG White": "Thermaltake View 270 Plus TG White",
-        
-        // Özellik çevirileri (Türkçe -> İngilizce)
         "Kasa Tipi:": "Case Type:",
         "Anakart:": "Motherboard:",
         "Malzeme:": "Material:",
@@ -444,7 +440,6 @@ function translateCaseCardsToEnglish() {
         "HP Brand": "HP Brand"
     };
 
-    // Tüm kasa kartlarının başlıklarını çevir
     document.querySelectorAll('#comp_case .sub-product-card .sub-product-card-title').forEach(title => {
         const originalText = title.textContent.trim();
         if (caseTranslations[originalText]) {
@@ -452,12 +447,10 @@ function translateCaseCardsToEnglish() {
         }
     });
 
-    // Tüm kasa kartlarının özellik listelerini çevir
     document.querySelectorAll('#comp_case .sub-product-card-back ul li').forEach(li => {
         const originalText = li.textContent.trim();
         let translatedText = originalText;
         
-        // Her bir Türkçe kelime/ifadeyi İngilizce'ye çevir
         for (const [tr, en] of Object.entries(caseTranslations)) {
             if (originalText.includes(tr)) {
                 translatedText = translatedText.replace(new RegExp(tr, 'g'), en);
@@ -575,7 +568,38 @@ function startTypewriter() {
 }
 
 /* =========================================
-   6. BÜTÜN SİSTEMİ BAŞLATAN ANA FONKSİYON (INIT)
+   6. FIBER OPTIC SAYFALAMA FONKSİYONU (Sayfa başına dönme özellikli)
+   ========================================= */
+function switchFiberPage(pageNum) {
+    const page1 = document.getElementById('fiber-page-1');
+    const page2 = document.getElementById('fiber-page-2');
+    const btn1 = document.getElementById('fiber-btn-page-1');
+    const btn2 = document.getElementById('fiber-btn-page-2');
+
+    if (!page1 || !page2 || !btn1 || !btn2) return;
+
+    if (pageNum === 1) {
+        page1.classList.remove('hidden');
+        page1.classList.add('flex');
+        page2.classList.add('hidden');
+        page2.classList.remove('flex');
+        
+        btn1.className = "w-12 h-12 rounded-xl font-bold transition-all bg-blue-600 text-white shadow-lg transform hover:scale-105";
+        btn2.className = "w-12 h-12 rounded-xl font-bold transition-all bg-white border border-gray-200 text-gray-600 hover:bg-blue-50 hover:text-blue-600 shadow-sm transform hover:scale-105";
+    } else {
+        page2.classList.remove('hidden');
+        page2.classList.add('flex');
+        page1.classList.add('hidden');
+        page1.classList.remove('flex');
+        
+        btn2.className = "w-12 h-12 rounded-xl font-bold transition-all bg-blue-600 text-white shadow-lg transform hover:scale-105";
+        btn1.className = "w-12 h-12 rounded-xl font-bold transition-all bg-white border border-gray-200 text-gray-600 hover:bg-blue-50 hover:text-blue-600 shadow-sm transform hover:scale-105";
+    }
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+/* =========================================
+   7. BÜTÜN SİSTEMİ BAŞLATAN ANA FONKSİYON (INIT)
    ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
     
