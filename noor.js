@@ -6,7 +6,7 @@
    4. DYNAMIC RENDER (Ürünleri Ekrana Basma)
    5. UI & INTERACTION (Menü, Form, Efektler)
    6. CASE CARDS AUTO TRANSLATE (Kasa kartları otomatik çeviri)
-   7. FIBER OPTIC SAYFALAMA
+   7. FIBER OPTIC SAYFALAMA (Sayfa hatırlama özellikli)
    ========================================================================== */
 
 let typeTimeout;
@@ -157,9 +157,6 @@ const translations = {
     }
 };
 
-/* =========================================
-   1.1 DATA: ÜRÜN LİSTELERİ (Dinamik Render İçin)
-   ========================================= */
 const whatsappSVG = `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>`;
 
 /* =========================================
@@ -219,7 +216,6 @@ function setLanguage(lang) {
         }
     });
 
-    // İletişim Formu
     const inputName = document.querySelector('form input[name="name"]');
     if(inputName) inputName.placeholder = translations[lang]['lbl_name'];
 
@@ -280,10 +276,7 @@ function setLanguage(lang) {
     const pageName = translations[lang]['nav_' + hash.split('_')[0]] || "IT & Fiber Solutions";
     document.title = `NOOR NETWORK | ${pageName}`;
 
-    // Dil değiştiğinde daktilo efektini yeniden başlat
     startTypewriter();
-    
-    // Kasa kartlarını otomatik çevir (TR hariç İngilizce)
     translateCaseCardsToEnglish();
 }
 
@@ -568,7 +561,7 @@ function startTypewriter() {
 }
 
 /* =========================================
-   6. FIBER OPTIC SAYFALAMA FONKSİYONU (Sayfa başına dönme özellikli)
+   6. FIBER OPTIC SAYFALAMA FONKSİYONU (Sayfa hatırlama özellikli)
    ========================================= */
 function switchFiberPage(pageNum) {
     const page1 = document.getElementById('fiber-page-1');
@@ -596,8 +589,10 @@ function switchFiberPage(pageNum) {
         btn1.className = "w-12 h-12 rounded-xl font-bold transition-all bg-white border border-gray-200 text-gray-600 hover:bg-blue-50 hover:text-blue-600 shadow-sm transform hover:scale-105";
     }
     
+    localStorage.setItem('activeFiberPage', pageNum);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
 /* =========================================
    7. BÜTÜN SİSTEMİ BAŞLATAN ANA FONKSİYON (INIT)
    ========================================= */
@@ -635,6 +630,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     startTypewriter();
+
+    // Fiber optik sayfa hatırlama - sayfa yenilendiğinde son kaldığın yerde kal
+    const savedFiberPage = localStorage.getItem('activeFiberPage');
+    if (savedFiberPage && document.getElementById('fiber-page-1')) {
+        switchFiberPage(parseInt(savedFiberPage));
+    }
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
