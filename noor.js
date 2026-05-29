@@ -625,9 +625,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLanguage') || 'en';
     setLanguage(savedLang);
 
-    requestAnimationFrame(() => {
-        document.body.style.opacity = '1';
-    });
 
     startTypewriter();
 
@@ -656,10 +653,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const imagesToLazyLoad = document.querySelectorAll('main img');
-    imagesToLazyLoad.forEach(img => {
-        if(!img.hasAttribute('loading')){
-            img.setAttribute('loading', 'lazy');
-        }
-    });
 });

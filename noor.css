@@ -4,16 +4,14 @@
         --brand-blue: #2563eb;
     }
 
-    body {
-        font-family: var(--font-en);
-        background-color: #ffffff;
-        color: #111;
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        opacity: 0; 
-        transition: opacity 0.3s ease-in-out;
-    }
+   body {
+    font-family: var(--font-en);
+    background-color: #ffffff;
+    color: #111;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
     /* =========================================
     --- RTL & LTR SUPPORT ---
