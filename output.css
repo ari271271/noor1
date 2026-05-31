@@ -2054,8 +2054,6 @@ body.rtl .dropdown-menu {
   height: 140px;
   margin: 0 auto 15px auto;
   border-radius: 10px;
-  background: transparent;
-  border: none;
   transition: all 0.4s ease;
   display: flex;
   align-items: center;
