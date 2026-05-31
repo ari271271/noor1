@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@source "./index.html";
+@source "./noor.js";
+
+/* Alt tarafta senin diğer eski CSS kodların aynı şekilde kalacak... */
 :root {
         --font-en: 'Inter', sans-serif;
         --font-ar: 'Noto Sans Arabic', sans-serif; 
