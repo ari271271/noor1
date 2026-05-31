@@ -1,3 +1,4 @@
+@import "tailwindcss";
 :root {
         --font-en: 'Inter', sans-serif;
         --font-ar: 'Noto Sans Arabic', sans-serif; 
