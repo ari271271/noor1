@@ -634,23 +634,9 @@ document.addEventListener('DOMContentLoaded', () => {
         switchFiberPage(parseInt(savedFiberPage));
     }
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
     document.querySelectorAll('section, .feature-card-pro, .team-card, .sub-product-card').forEach((el) => {
-        if (el.closest('#' + currentHash)) {
-            el.classList.add('visible'); 
-            el.style.opacity = '1';
-            el.style.transform = 'translateY(0)';
-        } else {
-            el.classList.add('reveal-on-scroll');
-            observer.observe(el);
-        }
+        el.classList.add('visible'); 
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
     });
-
 });
