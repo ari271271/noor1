@@ -640,3 +640,46 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transform = 'translateY(0)';
     });
 });
+
+/* =========================================
+   EMAILJS FORM SUBMISSION (NO PHP)
+   ========================================= */
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Public Key (Get from Account section)
+    emailjs.init({
+        publicKey: "-rhwTQoOfIhtfHqUP"
+    });
+
+    const form = document.getElementById('emailjs-contact-form');
+    
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const templateParams = {
+                name: form.name.value,
+                email: form.email.value,
+                message: form.message.value
+            };
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+
+            // 2. Service ID and Template ID (Copy exactly from panel)
+            emailjs.send('service_5ryz9ti', 'template_noornetwork2002', templateParams)
+                .then(function() {
+                    alert('Your message has been sent successfully!');
+                    form.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "SEND MESSAGE";
+                })
+                .catch(function(error) {
+                    console.error('Error:', error);
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "SEND MESSAGE";
+                    alert('Error Details: ' + JSON.stringify(error));
+                });
+        });
+    }
+});

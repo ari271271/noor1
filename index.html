@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="./output.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="noor.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body class="flex flex-col min-h-screen selection:bg-blue-200 selection:text-blue-900" id="mainBody">
 
@@ -859,10 +860,10 @@
                     <div class="absolute bottom-0 left-0 w-32 h-32 bg-purple-600 rounded-full filter blur-3xl opacity-20 -ml-16 -mb-16"></div>
                     
                     <h3 class="text-2xl font-bold mb-6 relative z-10" data-i18n="contact_form_title">Get in Touch</h3>
-                    <form action="https://formsubmit.co/noor.network2002@gmail.com" method="POST" class="relative z-10 space-y-4">
-    <input type="text" name="name" placeholder="name" required class="w-full px-4 py-3 bg-gray-800 text-white rounded-lg">
-    <input type="email" name="email" placeholder="Email" required class="w-full px-4 py-3 bg-gray-800 text-white rounded-lg">
-    <textarea name="message" placeholder="Mesaj" required class="w-full px-4 py-3 bg-gray-800 text-white rounded-lg"></textarea>
+                   <form id="emailjs-contact-form" class="relative z-10 space-y-4">
+    <input type="text" name="name" placeholder="Ad Soyad" required class="w-full px-4 py-3 bg-gray-800 text-white rounded-lg">
+    <input type="email" name="email" placeholder="E-posta" required class="w-full px-4 py-3 bg-gray-800 text-white rounded-lg">
+    <textarea name="message" placeholder="Mesajınız" required class="w-full px-4 py-3 bg-gray-800 text-white rounded-lg"></textarea>
     <button type="submit" class="btn-form">SEND MESSAGE</button>
 </form>
                 </div>
@@ -896,9 +897,9 @@
                 <h4 class="font-bold mb-6 text-white uppercase tracking-wider text-[13px]" data-i18n="footer_contact">CONTACT</h4>
                 <ul class="space-y-5 text-[15px] text-gray-400">
                     <li>
-                        <a href="mailto:noor.network2001@gmail.com" class="hover:text-white transition force-ltr-font flex items-center justify-center md:justify-start gap-3">
+                        <a href="mailto:noor.network2002@gmail.com" class="hover:text-white transition force-ltr-font flex items-center justify-center md:justify-start gap-3">
                             <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            noor.network2001@gmail.com
+                            noor.network2002@gmail.com
                         </a>
                     </li>
                     <li>
