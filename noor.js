@@ -489,7 +489,7 @@ function sendEmail(event) {
             Email: email,
             Mesaj: message
         })
-    })
+    }) 
     .then(response => response.json())
     .then(data => {
         alert(translations[currentLang]['alert_success']); 
